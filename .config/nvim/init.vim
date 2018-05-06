@@ -20,6 +20,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 
+Plug 'dracula/vim',{'as':'dracula'}
+
 " Initialize plugin system
 call plug#end()
 
@@ -74,4 +76,6 @@ noremap     [l     [i
 noremap     [L     [I
 noremap     ]l     ]i
 
+syntax on
 set mouse=a
+color dracula
