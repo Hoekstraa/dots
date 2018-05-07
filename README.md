@@ -8,7 +8,7 @@ My (new) dotfiles
 ## How to use
 
 Just put the files you want into your home directory after you installed the prerequisites.
-If you just want the whole shebang, you can clone this repo to your `~`.
+If you just want the whole shebang(or version control), you can use something like GNU Stow to symlink all files.
 
 ## Adding a file to the repository
 
