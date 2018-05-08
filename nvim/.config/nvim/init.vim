@@ -20,6 +20,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 
+Plug 'edkolev/tmuxline.vim'
 Plug 'dracula/vim',{'as':'dracula'}
 
 " Initialize plugin system
