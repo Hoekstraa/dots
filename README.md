@@ -15,10 +15,3 @@ Install Vim-plug with
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim``
 
 run the following command in nvim: `:PlugInstall`
-
-
-## Adding a file to the repository
-
-Since every single file ever is ignored by default, you need to force a file into the repository:
-
-``git add -f dir/file``
