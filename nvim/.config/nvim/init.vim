@@ -77,6 +77,15 @@ noremap     [l     [i
 noremap     [L     [I
 noremap     ]l     ]i
 
+filetype plugin indent on
+set termguicolors
 syntax on
+set number
+set laststatus=2
+set ignorecase
+set incsearch
+set hlsearch
 set mouse=a
+
+let mapleader="'"
 color dracula
