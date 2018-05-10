@@ -12,19 +12,19 @@ hc emit_hook reload
 #conky
 
 # DO NOT enable shadows, you'll ruin everything.
-#compton -CGfF -b --vsync opengl-oml --backend glx #-i 0.75
+compton -CGfF -b --vsync opengl-oml --backend glx #-i 0.75
 
 # Disable beep
 xset -b
 
-# Popups for password
-#lxpolkit
+# Popups for password (if lxpolkit exists on system)
+
+if [command -v lxpolkit != ""]; then lxpolkit fi
 
 # WALLPAPER :D
-#hsetroot -center ~/Wallpapers/Females/wallhaven-32129.jpg -brightness 0.1 -contrast 1.04
-#hsetroot -cover ~/Pictures/Wallpapers/wallhaven-597078.jpg
-#WALL="$(shuf -n1 -e ~/Pictures/Wallpapers/*)"
-#hsetroot -center $WALL
+WALL="$(shuf -n1 -e ~/Pictures/Wallpapers/*)"
+if [command -v hsetroot != ""]; then hsetroot -center $WALL fi
+if [command -v feh != ""]; then feh --bg-fill $WALL fi
 # remove all existing keybindings
 hc keyunbind --all
 
@@ -38,11 +38,11 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-q close
 
 ### LAUNCH KEYBINDINGS ###
-hc keybind $Mod-z spawn gnome-terminal #st/sakura
-hc keybind $Mod-x spawn /home/jan/Documents/waterfox/waterfox
-hc keybind $Mod-Return spawn dmenu
+hc keybind $Mod-z spawn gnome-terminal
+hc keybind $Mod-x spawn firefox
+#hc keybind $Mod-Return spawn dmenu
 # hc keybind $Mod-Return spawn rofi -show run -config /home/jan/.local/share/.rofi/themes/base16-nord.rasi
-hc keybind $Mod-F6 spawn setxkbmap us -variant colemak
+hc keybind $Mod-F6 spawn setxkbmap us -variant colemak && xset r 66
 hc keybind $Mod-F8 spawn setxkbmap us
 
 ### Volume control ###
@@ -163,7 +163,7 @@ hc set mouse_recenter_gap 0
 
 # rules
 hc unrule -F
-hc rule class=Waterfox tag=WEB # move all xterms to tag 3
+hc rule class=Firefox tag=WEB # move all firefox processes to tag WEB
 hc rule focus=on # normally focus new clients
 #hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
