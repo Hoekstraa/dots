@@ -19,9 +19,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 Plug 'vim-syntastic/syntastic'
 Plug 'maxboisvert/vim-simple-complete'
+Plug 'luochen1990/rainbow'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'matze/vim-tex-fold'
+
 
 Plug 'edkolev/tmuxline.vim'
 Plug 'dracula/vim',{'as':'dracula'}
@@ -89,6 +93,41 @@ set laststatus=2
 set ignorecase
 set incsearch
 set hlsearch
+set scrolloff=999
+set spelllang=nl
+set spell
+set mouse=a
+set foldenable
+set foldmethod=syntax
+
 
 let mapleader="'"
 color dracula
+
+" LaTeX lstlistings with syntastic is annoying
+let g:syntastic_disabled_filetypes=['tex']
+let g:rainbow_active = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+	let g:rainbow_conf = {
+	\	'guifgs': ['lightblue', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	\	'operators': '_,_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	\	'separately': {
+	\		'*': {},
+	\		'tex': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+	\		},
+	\		'lisp': {
+	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+	\		},
+	\		'vim': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+	\		},
+	\		'html': {
+	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+	\		},
+	\		'css': 0,
+	\	}
+	\}
