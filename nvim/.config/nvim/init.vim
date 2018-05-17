@@ -19,6 +19,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
+Plug 'lervag/vimtex'
 
 Plug 'edkolev/tmuxline.vim'
 Plug 'dracula/vim',{'as':'dracula'}
@@ -77,6 +78,8 @@ noremap     [l     [i
 noremap     [L     [I
 noremap     ]l     ]i
 
+imap <Tab> <C-P>
+
 filetype plugin indent on
 set termguicolors
 syntax on
@@ -85,7 +88,6 @@ set laststatus=2
 set ignorecase
 set incsearch
 set hlsearch
-set mouse=a
 
 let mapleader="'"
 color dracula
