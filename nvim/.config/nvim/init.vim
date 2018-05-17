@@ -20,6 +20,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 Plug 'lervag/vimtex'
+Plug 'vim-syntastic/syntastic'
+Plug 'maxboisvert/vim-simple-complete'
 
 Plug 'edkolev/tmuxline.vim'
 Plug 'dracula/vim',{'as':'dracula'}
@@ -78,7 +80,6 @@ noremap     [l     [i
 noremap     [L     [I
 noremap     ]l     ]i
 
-imap <Tab> <C-P>
 
 filetype plugin indent on
 set termguicolors
