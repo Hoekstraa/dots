@@ -1,3 +1,5 @@
+set nocompatible
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -28,7 +30,7 @@ Plug 'matze/vim-tex-fold'
 
 
 Plug 'edkolev/tmuxline.vim'
-Plug 'dracula/vim',{'as':'dracula'}
+Plug 'Altlock/vim',{'as':'dracula'}
 
 " Initialize plugin system
 call plug#end()
@@ -85,32 +87,72 @@ noremap     [L     [I
 noremap     ]l     ]i
 
 
+set encoding=utf-8      " Unicode
 filetype plugin indent on
-set termguicolors
+
+"=== Colors ===
+
+color dracula
+" set termguicolors       " Allows for correct theming
+set t_Co=256            " Allows for correct theming
+set t_ut=
+"set background=dark
+
+"==============
+
 syntax on
-set number
+set shell=/bin/bash
+
+
+set number              " Show linenumbers
 set laststatus=2
+" set spelllang=nl      " Change default spell language
+set spell               " Enable spellcheck
+set mouse=a             " Enable mouse support in ViM
+set title               " Set title of process to name of current file
+set autoread            " Reload files edited outside of ViM
+set hidden              " Allow hidden buffers
+set nowrap              " Don't wrap lines by default
+set linebreak           " Wrap lines a convenient places
+
+
+"=== Auto-scrolling ===
+
+set scrolloff=999       " Have cursor always* in the middle of screen
+set sidescrolloff=50    " Start scrolling when 50 chars from margin
+set sidescroll=10        " Scroll horizontally by 10 chars at a time
+
+"=== Search ===
+
+set wildmenu
 set ignorecase
 set incsearch
 set hlsearch
-set scrolloff=999
-set spelllang=nl
-set spell
-set mouse=a
+
+"=== Folding ===
+
 set foldenable
 set foldmethod=syntax
+set foldnestmax=2
 
+"=== Indentation ===
+" Make tabs 2 spaces
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 let mapleader="'"
-color dracula
 
 " LaTeX lstlistings with syntastic is annoying
 let g:syntastic_disabled_filetypes=['tex']
+
 let g:rainbow_active = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
+let g:tex_flavor = "latex"
+
 	let g:rainbow_conf = {
-	\	'guifgs': ['lightblue', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'guifgs': ['lightcyan', 'darkorange3', 'seagreen3', 'firebrick'],
 	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
 	\	'operators': '_,_',
 	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
