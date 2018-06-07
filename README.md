@@ -5,6 +5,7 @@ My (new) dotfiles
 
 * Vim-plug for nvim
 * GNU Stow
+* Fira fonts
 
 ## How to use
 
