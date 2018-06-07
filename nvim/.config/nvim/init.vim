@@ -27,11 +27,11 @@ Plug 'maxboisvert/vim-simple-complete'
 Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'matze/vim-tex-fold'
-
-
+Plug 'vim-scripts/paredit.vim'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 Plug 'edkolev/tmuxline.vim'
 Plug 'Altlock/vim',{'as':'dracula'}
-
 " Initialize plugin system
 call plug#end()
 
