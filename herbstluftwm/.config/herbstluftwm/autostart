@@ -9,22 +9,23 @@ hc() {
 hc emit_hook reload
 
 #Personal startup apps
-#conky
+conky
 
 # DO NOT enable shadows, you'll ruin everything.
-compton -CGfF -b --vsync opengl-oml --backend glx #-i 0.75
+compton -CGfF -b --vsync opengl-oml --backend glx -i 0.75
 
 # Disable beep
-xset -b
+# xset -b
 
 # Popups for password (if lxpolkit exists on system)
 
-if [command -v lxpolkit != ""]; then lxpolkit fi
+# if [command -v lxpolkit != ""]; then lxpolkit fi
 
 # WALLPAPER :D
 WALL="$(shuf -n1 -e ~/Pictures/Wallpapers/*)"
-if [command -v hsetroot != ""]; then hsetroot -center $WALL fi
-if [command -v feh != ""]; then feh --bg-fill $WALL fi
+# if [command -v hsetroot != ""]; then hsetroot -center $WALL fi
+feh --bg-fill $WALL
+
 # remove all existing keybindings
 hc keyunbind --all
 
@@ -38,7 +39,7 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-q close
 
 ### LAUNCH KEYBINDINGS ###
-hc keybind $Mod-z spawn gnome-terminal
+hc keybind $Mod-z spawn urxvt256c
 hc keybind $Mod-x spawn firefox
 #hc keybind $Mod-Return spawn dmenu
 # hc keybind $Mod-Return spawn rofi -show run -config /home/jan/.local/share/.rofi/themes/base16-nord.rasi

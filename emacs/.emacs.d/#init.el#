@@ -38,7 +38,7 @@
 (smartparens-global-mode t)
 (global-git-gutter-mode +1)
 (powerline-default-theme)
-
+(symon-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

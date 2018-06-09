@@ -12,7 +12,7 @@ URxvt.secondaryScroll: 0
 
 !!! Font Stuff !!!
 
-URxvt.font: xft:FiraCode:size=11
+URxvt.font: xft:FiraCode:size=12
 
 Xft*dpi:                96
 Xft*antialias:          true
@@ -22,7 +22,7 @@ URxvt*geometry:                100x30
 
 !!! Perl extensions !!!
 !
-URxvt.perl-ext-common: default,matcher,font-size,selection-to-clipboard,pasta
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
 !! Open urls in browser with Control-Click
 URxvt.urlLauncher: /usr/bin/firefox
 URxvt.matcher.button: C1
