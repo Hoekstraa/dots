@@ -1,0 +1,1 @@
+/home/jan/dots/emacs/.emacs.d/init.el
