@@ -30,7 +30,6 @@ URxvt.matcher.button: C1
 !!! Appearance !!!
 URxvt.scrollBar: false
 URxvt*borderless: 1
-URxvt*depth:                24
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
@@ -51,3 +50,7 @@ URxvt*depth:                24
 *.color14:    #9AEDFE
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
+
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
+

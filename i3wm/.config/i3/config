@@ -20,9 +20,10 @@ for_window [class="^.*"] border pixel 0
 ###### Startup ##############################################################
 
 # Double-buffering is important to your health
-exec "compton -CGfF -b --opengl --vsync opengl-oml --backend glx -i 0.60" #--blur-background --blur-kern 5x5box"
+exec "compton -CGfF -b --opengl --vsync opengl-oml --backend glx" #-i 0.60 --blur-background --blur-kern 5x5box"
 exec "/bin/sh ~/.fehbg"
 exec "conky -c ~/.conky/i3-conky.conf"
+exec "nm-applet"
 
 ###### Program Bindings #####################################################
 
@@ -177,7 +178,7 @@ bar {
     position top
     tray_output primary
 
-    font pango:FuraCode Nerd Font Mono 10
+    font pango:FuraCode Nerd Font Mono 12
 
     status_command i3blocks #i3status
 }

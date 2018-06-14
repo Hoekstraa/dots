@@ -29,12 +29,17 @@
 	auto-complete
 	smartparens
 	git-gutter ;; That git always ends up in the gutter.
-	;; paredit ;; Maybe useful when I program in Clojure or another Lisp again
+	paredit ;; Maybe useful when I program in Clojure or another Lisp again
 	markdown-mode
 	powerline
-	;; ivy-mode ;; Error? 0_0
-	auctex ;; Much nicer LaTeX support 
-	))
+	ivy 
+	auctex ;; Much nicer LaTeX support
+	i3wm
+	symon
+	magit
+	dired-sidebar
+	dired-single
+        ))
 
 (mapc 'install-if-needed to-install)
 
@@ -43,9 +48,9 @@
 (aggressive-indent-global-mode t) ;; Force those indents hard!
 (global-linum-mode t) ;; We need those numbers in front of the text.
 (global-auto-complete-mode t) ;; Duh
-(smartparens-global-mode t) ;; Maybe replace this with parinfer if I want more aggressive parens
+;; (smartparens-global-mode t) ;; Maybe replace this with parinfer if I want more aggressive parens
 ;; (global-git-gutter-mode +1) Possibly a little annoying to have globally?
-(powerline-default-theme) ;; bar all the way, at the bootom of the screen 0.0
+(powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
 (symon-mode) ;; Display computer info in the terminalbar when idling
 (ivy-mode 1) ;; autocomplete the M-x thingybar stuff
 (require 'centered-cursor-mode)
@@ -159,6 +164,9 @@
 (global-set-key (kbd "C-x 3") 'hsplit-last-buffer)
 
 
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -172,7 +180,7 @@
  '(font-latex-fontify-script nil)
  '(package-selected-packages
    (quote
-    (i3wm auctex markdown-preview-mode ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake flycheck symon powerline markdown-mode paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent))))
+    (auctex-lua dired-sidebar dired-single magit i3wm auctex ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake symon powerline paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
