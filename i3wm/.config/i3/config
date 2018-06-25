@@ -25,6 +25,7 @@ exec "/bin/sh ~/.fehbg"
 exec "conky -c ~/.config/conky/i3-conky.conf"
 exec "nm-applet"
 exec "redshift -t 5500k:2000k"
+exec "volumeicon"
 
 ###### Program Bindings #####################################################
 
