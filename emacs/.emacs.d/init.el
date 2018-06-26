@@ -103,7 +103,7 @@
 (blink-cursor-mode nil)                      ; I'm already agitated enough
 (cua-mode t)                  ; Regular classic copy-cut-paste and marking
 (mouse-wheel-mode t)                         ; Mouse wheel enabled
-
+					;(set-face-background 'hl-line darkslateblue) ; WHY DOESN'T THIS WORK? FIND FIX!
 ;;;;;; I'm a European, so...
 
 (setq european-calendar-style 't)              ; European style calendar
@@ -122,6 +122,9 @@
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
 (setq blink-matching-paren-distance nil)       ; Blinking parenthesis
 (setq show-paren-style 'expression)            ; Highlight text between parentheses
+
+(require 'paren)
+(set-face-background 'show-paren-match black)
 
 ;;;;;; AucTeX
 

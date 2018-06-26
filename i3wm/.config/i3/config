@@ -39,6 +39,18 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d "exec dmenu_run"
 
+###### Colors ###############################################################
+
+# class                 border  bground text    indicator child_border
+client.focused          #1076A2 #0F5784 #CAD6DF #1076A2   #0F5784
+client.focused_inactive #0A315A #0A315A #CAD6DF #484E50   #5F676A
+client.unfocused        #333333 #080E1E #888888 #080E1E   #080E1E
+client.urgent           #2F343A #900000 #CAD6DF #900000   #900000
+client.placeholder      #000000 #0C0C0C #CAD6DF #000000   #0C0C0C
+
+client.background       #FFFFFF
+
+
 
 ###### Bindings #############################################################
 
@@ -177,6 +189,19 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+  colors {
+    background #080E1E
+    statusline #CAD6DF
+    separator  #666666
+
+    focused_workspace  #4C7899 #285577 #CAD6DF
+    active_workspace   #333333 #222222 #FFFFFF
+    inactive_workspace #333333 #222222 #888888
+    urgent_workspace   #2F343A #900000 #FFFFFF
+    binding_mode       #2F343A #900000 #FFFFFF
+  }
+    
+
     position top
     tray_output primary
 
