@@ -17,7 +17,7 @@ URxvt.font: xft:FiraCode:size=12
 Xft*dpi:                96
 Xft*antialias:          true
 Xft*hinting:            full
-URxvt*geometry:                100x30
+URxvt*geometry:         100x30
 
 
 !!! Perl extensions !!!
