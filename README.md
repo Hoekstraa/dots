@@ -9,6 +9,7 @@ My (new) dotfiles
     * Fura Code Regular Nerd Font Complete Mono
 * Conky
     * Fira fonts
+    * Raleway fonts
 * i3wm
     * Compton
 * Openbox
