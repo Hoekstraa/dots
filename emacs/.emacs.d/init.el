@@ -123,8 +123,8 @@
 (setq blink-matching-paren-distance nil)       ; Blinking parenthesis
 (setq show-paren-style 'expression)            ; Highlight text between parentheses
 
-(require 'paren)
-(set-face-background 'show-paren-match black)
+					;(require 'paren)
+					;(set-face-background 'show-paren-match black)
 
 ;;;;;; AucTeX
 
