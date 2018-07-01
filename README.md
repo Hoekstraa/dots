@@ -3,9 +3,23 @@ My (new) dotfiles
 
 ## Software required:
 
-* Vim-plug for nvim
 * GNU Stow
-* Fira fonts
+* nvim
+    * Vim-plug
+    * Fura Code Regular Nerd Font Complete Mono
+* Conky
+    * Fira fonts
+    * Raleway fonts
+* i3wm
+    * Compton
+* Openbox
+    * 1977 Openbox
+* Neofetch
+    * w3m
+
+And of course the programs the dotfiles are meant for.
+
+
 
 ## How to use
 
