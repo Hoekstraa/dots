@@ -30,6 +30,8 @@ exec "nm-applet"
 exec "redshift -t 5500k:2000k"
 exec "volumeicon"
 exec "emacs --daemon"
+exec "xinput set-prop 10 279 1"
+exec "xinput set-prop 10 287 1"
 
 ###### Program Bindings #####################################################
 
@@ -44,6 +46,10 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d "exec dmenu_run"
+
+
+bindsym $mod+F2 exec "setxkbmap us -variant colemak && xset r 66"
+bindsym $mod+F3 exec "setxkbmap us -variant euro && xset r 66"
 
 ###### Colors ###############################################################
 
