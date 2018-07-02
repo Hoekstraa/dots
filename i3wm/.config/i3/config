@@ -30,8 +30,6 @@ exec "nm-applet"
 exec "redshift -t 5500k:2000k"
 exec "volumeicon"
 exec "emacs --daemon"
-exec "xinput set-prop 10 279 1"
-exec "xinput set-prop 10 287 1"
 
 ###### Program Bindings #####################################################
 
