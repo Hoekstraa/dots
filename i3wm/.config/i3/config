@@ -30,6 +30,10 @@ exec "nm-applet"
 exec "redshift -t 5500k:2000k"
 exec "volumeicon"
 exec "emacs --daemon"
+exec "xrandr | grep 'HDMI1 connected' &&
+    xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1"
+
+exec_always --no-startup-id ~/.config/i3/polybar.sh &
 
 ###### Program Bindings #####################################################
 
@@ -198,24 +202,24 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  colors {
-    background #080E1E
-    statusline #CAD6DF
-    separator  #1076A2
-
-    focused_workspace  #1076A2 #080E1E #1076A2
-    active_workspace   #1076A2 #222222 #1076A2
-    inactive_workspace #080E1E #080E1E #1076A2
-    urgent_workspace   #2F343A #900000 #FFFFFF
-    binding_mode       #2F343A #900000 #FFFFFF
-  }
-    
-
-    position top
-    tray_output primary
-
-    font pango:FuraCode Nerd Font Mono 12
-
-    status_command i3blocks #i3status
-}
+#bar {
+#  colors {
+#    background #080E1E
+#    statusline #CAD6DF
+#    separator  #1076A2
+#
+#    focused_workspace  #1076A2 #080E1E #1076A2
+#    active_workspace   #1076A2 #222222 #1076A2
+#    inactive_workspace #080E1E #080E1E #1076A2
+#    urgent_workspace   #2F343A #900000 #FFFFFF
+#    binding_mode       #2F343A #900000 #FFFFFF
+#  }
+#    
+#
+#    position top
+#    tray_output primary
+#
+#    font pango:FuraCode Nerd Font Mono 12
+#
+#    status_command i3blocks #i3status
+#}
