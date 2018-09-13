@@ -25,20 +25,22 @@
 	inf-ruby ;; Provides Ruby REPL
 	ac-inf-ruby
 	
-	centered-cursor-mode ;; We need to focus on what's on front of us!
+	centered-cursor-mode ;; We need to focus on what's in front of us!
 	auto-complete
 	smartparens
 	git-gutter ;; That git always ends up in the gutter.
-	paredit ;; Maybe useful when I program in Clojure or another Lisp again
+	paredit ;; May be useful when I program in Clojure or another Lisp again
 	markdown-mode
-	powerline
-	ivy 
+	powerline ;; Colorful bar :)
+	ivy ;; Completes me
 	auctex ;; Much nicer LaTeX support
 	i3wm
 	symon
 	magit
 	dired-sidebar
 	dired-single
+	csharp-mode ;; C#
+	tuaga ;; Ocaml tools
         ))
 
 (mapc 'install-if-needed to-install)
