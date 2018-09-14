@@ -29,7 +29,8 @@
 	auto-complete
 	smartparens
 	git-gutter ;; That git always ends up in the gutter.
-	paredit ;; May be useful when I program in Clojure or another Lisp again
+	;;paredit ;; May be useful when I program in Clojure or another Lisp again
+	;;parinfer
 	markdown-mode
 	powerline ;; Colorful bar :)
 	ivy ;; Completes me
@@ -39,18 +40,26 @@
 	magit
 	dired-sidebar
 	dired-single
+	flycheck
+	
 	csharp-mode ;; C#
-	tuaga ;; Ocaml tools
+	omnisharp
+	
+	
+	tuareg ;; Ocaml tools
         ))
 
 (mapc 'install-if-needed to-install)
+
+
+(defun tuareg-abbrev-hook () (nil)) ;; Prevents error in Tuareg
 
 ;;;;;;;;;;;;;GLOBAL MODES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (aggressive-indent-global-mode t) ;; Force those indents hard!
 (global-linum-mode t) ;; We need those numbers in front of the text.
 (global-auto-complete-mode t) ;; Duh
-;; (smartparens-global-mode t) ;; Maybe replace this with parinfer if I want more aggressive parens
+(smartparens-global-mode t) ;; Maybe replace this with parinfer if I want more aggressive parens
 ;; (global-git-gutter-mode +1) Possibly a little annoying to have globally?
 (powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
 (symon-mode) ;; Display computer info in the terminalbar when idling
@@ -106,6 +115,7 @@
 (cua-mode t)                  ; Regular classic copy-cut-paste and marking
 (mouse-wheel-mode t)                         ; Mouse wheel enabled
 					;(set-face-background 'hl-line darkslateblue) ; WHY DOESN'T THIS WORK? FIND FIX!
+
 ;;;;;; I'm a European, so...
 
 (setq european-calendar-style 't)              ; European style calendar
@@ -136,11 +146,6 @@
 (setq TeX-save-query nil)
 (setq TeX-PDF-mode t)
 
-
-
-
-
-
 ;; No stupid backup/temporary files in every folder, but in a dedicated one
 (setq
  version-control t
@@ -167,10 +172,6 @@
 
 (global-set-key (kbd "C-x 2") 'vsplit-last-buffer)
 (global-set-key (kbd "C-x 3") 'hsplit-last-buffer)
-
-
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
