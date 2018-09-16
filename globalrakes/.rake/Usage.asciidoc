@@ -1,6 +1,6 @@
-#Global rakefiles
+# Global rakefiles
 
-##How to use
+## How to use
 
 ```
 rake -g [name]
