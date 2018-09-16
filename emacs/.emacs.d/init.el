@@ -6,6 +6,7 @@
 
 ;;;; Code:
 (load "~/.emacs.d/packages.el")
+(load "~/.emacs.d/keybindings.el")
 
 ;;;;;;;;;;;;;GLOBAL MODES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -21,6 +22,8 @@
 (global-centered-cursor-mode) ;; Function definition is void unless normal mode is called first :P
 (global-hl-line-mode t) ; Highlight cursor line
 (global-flycheck-mode)
+(global-company-mode)
+(yas-global-mode)
 
 ;;;;;;;;;;;;;HOOKS:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
