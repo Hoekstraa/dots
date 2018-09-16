@@ -1,61 +1,11 @@
+;;;; package --- Summary: Main initialization for emacs
+
+;;;; Commentary:
+
 ;; Emacs version >= 24 recommended
-(require 'package)
-(package-initialize)
 
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-(package-refresh-contents)
-
-(defun install-if-needed (package)
-  (unless (package-installed-p package)
-    (package-install package)))
-
-;;;;;;;;;;;;;PACKAGES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq to-install
-      '(aggressive-indent
-	dracula-theme
-	centered-cursor-mode ;; We need to focus on what's in front of us!
-	auto-complete
-	smartparens
-	git-gutter ;; That git always ends up in the gutter.	
-	powerline ;; Colorful bar :)
-	ivy ;; Completes me
-	i3wm
-	symon
-	magit
-	dired-sidebar
-	dired-single
-	flycheck
-	
-	;;paredit ;; May be useful when I program in Clojure or another Lisp again
-	;;parinfer
-
-	;; Ruby
-	ruby-end ;; Auto-insert an ending thing to block-stuff in Ruby
-	inf-ruby ;; Provides Ruby REPL
-	ac-inf-ruby
-	
-	;;markup langs
-	markdown-mode
-	adoc-mode
-	haml-mode
-	auctex ;; Much nicer LaTeX support
-	
-	;; Other langs
-	lua-mode
-	csharp-mode ;; C#
-	omnisharp
-	tuareg ;; Ocaml tools
-	))
-
-(mapc 'install-if-needed to-install)
-
-
-(defun tuareg-abbrev-hook () (nil)) ;; Prevents error in Tuareg
+;;;; Code:
+(load "~/.emacs.d/packages.el")
 
 ;;;;;;;;;;;;;GLOBAL MODES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -63,16 +13,16 @@
 (global-linum-mode t) ;; We need those numbers in front of the text.
 (global-auto-complete-mode t) ;; Duh
 (smartparens-global-mode t) ;; Maybe replace this with parinfer if I want more aggressive parens
-;; (global-git-gutter-mode +1) Possibly a little annoying to have globally?
+(global-git-gutter-mode +1) ;;Possibly a little annoying to have globally?
 (powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
-(symon-mode) ;; Display computer info in the terminalbar when idling
+;;(symon-mode) ;; Display computer info in the terminalbar when idling
 (ivy-mode 1) ;; autocomplete the M-x thingybar stuff
 (require 'centered-cursor-mode)
 (global-centered-cursor-mode) ;; Function definition is void unless normal mode is called first :P
 (global-hl-line-mode t) ; Highlight cursor line
+(global-flycheck-mode)
 
 ;;;;;;;;;;;;;HOOKS:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 (require 'reftex)
 ;;(autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
@@ -89,16 +39,6 @@
 (add-hook 'reftex-load-hook 'imenu-add-menubar-index)
 (add-hook 'reftex-mode-hook 'imenu-add-menubar-index)
 
-;;;;;;; LaTeX compilecheck
-;;(require 'flymake)
-;;
-;;(defun flymake-get-tex-args (file-name)
-;;(list "pdflatex"
-;;(list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
-;;
-;;(add-hook 'LaTeX-mode-hook 'flymake-mode)
-
-
 ;;;;;;; LaTeX spellcheck
 ;;(setq ispell-program-name "aspell") ; could be ispell as well, depending on your preferences
 ;;(setq ispell-dictionary "english") ; this can obviously be set to any language your spell-checking program supports
@@ -112,9 +52,10 @@
 
 ;;;;;; General UI
 
-(define-key menu-bar-tools-menu [games] nil) ; Remove games menu
+(tool-bar-mode -1) ; Don't need a toolbar...
+(define-key menu-bar-tools-menu [games] 0) ; Remove games menu
 (setq inhibit-startup-message t)             ; No startup message
-(blink-cursor-mode nil)                      ; I'm already agitated enough
+(blink-cursor-mode 0)                      ; I'm already agitated enough
 (cua-mode t)                  ; Regular classic copy-cut-paste and marking
 (mouse-wheel-mode t)                         ; Mouse wheel enabled
 					;(set-face-background 'hl-line darkslateblue) ; WHY DOESN'T THIS WORK? FIND FIX!
@@ -132,10 +73,10 @@
 
 ;;;;;; Tabs, spaces, indents, lines, parentheses, etc.
 
-(setq indent-tabs-mode nil)
+(setq indent-tabs-mode 0)
 (setq-default c-basic-offset 4)  ;; use 4 spaces as indentation instead of tabs
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
-(setq blink-matching-paren-distance nil)       ; Blinking parenthesis
+(setq blink-matching-paren-distance 0)       ; Blinking parenthesis
 (setq show-paren-style 'expression)            ; Highlight text between parentheses
 
 					;(require 'paren)
@@ -154,19 +95,21 @@
  version-control t
  kept-new-versions 6
  kept-old-versions 2
- backup-by-copying t   
+ backup-by-copying t
  backup-directory-alist '(("." . "~/.emacs.d/saves"))
  delete-old-versions t)
 
 ;;;;;;;;;;;;;FUNCTIONS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun vsplit-last-buffer () ; When opening a new split,
-  (interactive)  ; open previous buffer instead of 2 identical ones
+(defun vsplit-last-buffer ()
+  "When opening a new split, open previous buffer instead of 2 identical ones.  Vertically."
+  (interactive)
   (split-window-vertically)
   (other-window 1 nil)
   (switch-to-next-buffer)
   )
 (defun hsplit-last-buffer ()
+  "When opening a new split, open previous buffer instead of 2 identical ones.  Horizontally."
   (interactive)
   (split-window-horizontally)
   (other-window 1 nil)
@@ -182,14 +125,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
    (quote
-    ("a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" default)))
+    ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" "a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" default)))
  '(font-latex-fontify-script nil)
  '(package-selected-packages
    (quote
-    (auctex-lua dired-sidebar dired-single magit i3wm auctex ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake symon powerline paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent))))
+    (adoc-mode ascii company ac-clang auctex-lua dired-sidebar dired-single magit i3wm auctex ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake symon powerline paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent)))
+ '(show-paren-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -197,3 +142,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "FuraCode Nerd Font Mono" :foundry "CTDB" :slant normal :weight normal :height 113 :width normal)))))
+
+(provide 'init)
+;;; init.el ends here
