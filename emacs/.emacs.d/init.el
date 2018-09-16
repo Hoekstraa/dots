@@ -18,23 +18,12 @@
 (setq to-install
       '(aggressive-indent
 	dracula-theme
-	haml-mode
-	lua-mode
-	;; Ruby
-	ruby-end ;; Auto-insert an ending thing to block-stuff in Ruby
-	inf-ruby ;; Provides Ruby REPL
-	ac-inf-ruby
-	
 	centered-cursor-mode ;; We need to focus on what's in front of us!
 	auto-complete
 	smartparens
-	git-gutter ;; That git always ends up in the gutter.
-	;;paredit ;; May be useful when I program in Clojure or another Lisp again
-	;;parinfer
-	markdown-mode
+	git-gutter ;; That git always ends up in the gutter.	
 	powerline ;; Colorful bar :)
 	ivy ;; Completes me
-	auctex ;; Much nicer LaTeX support
 	i3wm
 	symon
 	magit
@@ -42,12 +31,26 @@
 	dired-single
 	flycheck
 	
+	;;paredit ;; May be useful when I program in Clojure or another Lisp again
+	;;parinfer
+
+	;; Ruby
+	ruby-end ;; Auto-insert an ending thing to block-stuff in Ruby
+	inf-ruby ;; Provides Ruby REPL
+	ac-inf-ruby
+	
+	;;markup langs
+	markdown-mode
+	adoc-mode
+	haml-mode
+	auctex ;; Much nicer LaTeX support
+	
+	;; Other langs
+	lua-mode
 	csharp-mode ;; C#
 	omnisharp
-	
-	
 	tuareg ;; Ocaml tools
-        ))
+	))
 
 (mapc 'install-if-needed to-install)
 
