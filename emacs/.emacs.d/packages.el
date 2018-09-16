@@ -37,6 +37,8 @@
 	dired-sidebar
 	dired-single
 	flycheck
+	yasnippet
+	yasnippet-snippets
 	
 	;;paredit ;; May be useful when I program in Clojure or another Lisp again
 	;;parinfer

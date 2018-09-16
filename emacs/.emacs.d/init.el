@@ -13,7 +13,7 @@
 (global-linum-mode t) ;; We need those numbers in front of the text.
 (global-auto-complete-mode t) ;; Duh
 (smartparens-global-mode t) ;; Maybe replace this with parinfer if I want more aggressive parens
-(global-git-gutter-mode +1) ;;Possibly a little annoying to have globally?
+;(global-git-gutter-mode +1) ;;Possibly a little annoying to have globally?
 (powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
 ;;(symon-mode) ;; Display computer info in the terminalbar when idling
 (ivy-mode 1) ;; autocomplete the M-x thingybar stuff
@@ -99,6 +99,9 @@
  backup-directory-alist '(("." . "~/.emacs.d/saves"))
  delete-old-versions t)
 
+;; Font!
+(set-face-attribute 'default nil :family "FuraCode Nerd Font Mono"  :height 130)
+
 ;;;;;;;;;;;;;FUNCTIONS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun vsplit-last-buffer ()
@@ -125,6 +128,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
@@ -133,15 +137,9 @@
  '(font-latex-fontify-script nil)
  '(package-selected-packages
    (quote
-    (adoc-mode ascii company ac-clang auctex-lua dired-sidebar dired-single magit i3wm auctex ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake symon powerline paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent)))
- '(show-paren-mode t))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "FuraCode Nerd Font Mono" :foundry "CTDB" :slant normal :weight normal :height 113 :width normal)))))
+    (yasnippet-snippets adoc-mode ascii company ac-clang auctex-lua dired-sidebar dired-single magit i3wm auctex ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake symon powerline paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent)))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 
 (provide 'init)
 ;;; init.el ends here
