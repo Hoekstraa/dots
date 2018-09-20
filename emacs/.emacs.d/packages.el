@@ -40,6 +40,12 @@
 	yasnippet
 	yasnippet-snippets
 	
+	company	; Code completion, generally better then AC
+	company-c-headers
+	company-web
+	
+	counsel ; More completion opportunities for Ivy
+	
 	;;paredit ;; May be useful when I program in Clojure or another Lisp again
 	;;parinfer
 
