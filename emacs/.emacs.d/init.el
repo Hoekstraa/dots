@@ -25,32 +25,6 @@
 (global-company-mode)
 (yas-global-mode)
 
-;;;;;;;;;;;;;HOOKS:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(require 'reftex)
-;;(autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
-;;(autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" nil)
-;;(autoload 'reftex-citation "reftex-cite" "Make citation" nil)
-;;(autoload 'reftex-index-phrase-mode "reftex-index" "Phrase Mode" t)
-;;(add-hook 'latex-mode-hook 'turn-on-reftex) ; with Emacs latex mode
-;; (add-hook 'reftex-load-hook 'imenu-add-menubar-index)
-;;(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-
-;; Not working currently, don't know why :|
-;;(add-hook ’LaTeX-mode-hook ’turn-on-reftex)   ; with AUCTeX LaTeX mode
-;;(add-hook ’latex-mode-hook ’turn-on-reftex)   ; with Emacs latex mode
-(add-hook 'reftex-load-hook 'imenu-add-menubar-index)
-(add-hook 'reftex-mode-hook 'imenu-add-menubar-index)
-
-;;;;;;; LaTeX spellcheck
-;;(setq ispell-program-name "aspell") ; could be ispell as well, depending on your preferences
-;;(setq ispell-dictionary "english") ; this can obviously be set to any language your spell-checking program supports
-
-;;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-;;(add-hook 'LaTeX-mode-hook 'flyspell-buffer)
-
-
-
 ;;;;;;;;;;;;;VARIABLES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;; General UI
@@ -84,14 +58,6 @@
 
 					;(require 'paren)
 					;(set-face-background 'show-paren-match black)
-
-;;;;;; AucTeX
-
-(setq TeX-auto-save t) ; Some stuff to do with AucTeX
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-(setq TeX-save-query nil)
-(setq TeX-PDF-mode t)
 
 ;; No stupid backup/temporary files in every folder, but in a dedicated one
 (setq
