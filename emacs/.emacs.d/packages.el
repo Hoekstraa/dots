@@ -26,19 +26,13 @@
       '(aggressive-indent
 	dracula-theme
 	centered-cursor-mode ;; We need to focus on what's in front of us!
-	auto-complete
-	smartparens
-	git-gutter ;; That git always ends up in the gutter.
 	powerline ;; Colorful bar :)
 	ivy ;; Completes me
 	i3wm
-	;;symon
 	magit
 	dired-sidebar
 	dired-single
 	flycheck
-	yasnippet
-	yasnippet-snippets
 	
 	company	; Code completion, generally better then AC
 	company-c-headers
