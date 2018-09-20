@@ -12,18 +12,16 @@
 
 (aggressive-indent-global-mode t) ;; Force those indents hard!
 (global-linum-mode t) ;; We need those numbers in front of the text.
-(global-auto-complete-mode t) ;; Duh
-(smartparens-global-mode t) ;; Maybe replace this with parinfer if I want more aggressive parens
-;(global-git-gutter-mode +1) ;;Possibly a little annoying to have globally?
+;; (global-auto-complete-mode t) ;; Let's disable this in favor of Company
+;; (smartparens-global-mode t) ;; Just as annoying as it's useful.
 (powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
-;;(symon-mode) ;; Display computer info in the terminalbar when idling
 (ivy-mode 1) ;; autocomplete the M-x thingybar stuff
 (require 'centered-cursor-mode)
-(global-centered-cursor-mode) ;; Function definition is void unless normal mode is called first :P
+(global-centered-cursor-mode) ;; Function definition is void unless normal mode is required first :P
 (global-hl-line-mode t) ; Highlight cursor line
 (global-flycheck-mode)
 (global-company-mode)
-(yas-global-mode)
+; (yas-global-mode) Hasn't helped me at all. Maybe replace with the skeleton package to make my own snippets.
 
 ;;;;;;;;;;;;;VARIABLES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -35,7 +33,6 @@
 (blink-cursor-mode 0)                      ; I'm already agitated enough
 (cua-mode t)                  ; Regular classic copy-cut-paste and marking
 (mouse-wheel-mode t)                         ; Mouse wheel enabled
-					;(set-face-background 'hl-line darkslateblue) ; WHY DOESN'T THIS WORK? FIND FIX!
 
 ;;;;;; I'm a European, so...
 
@@ -55,9 +52,6 @@
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
 (setq blink-matching-paren-distance 0)       ; Blinking parenthesis
 (setq show-paren-style 'expression)            ; Highlight text between parentheses
-
-					;(require 'paren)
-					;(set-face-background 'show-paren-match black)
 
 ;; No stupid backup/temporary files in every folder, but in a dedicated one
 (setq
