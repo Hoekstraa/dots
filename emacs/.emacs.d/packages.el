@@ -33,6 +33,7 @@
 	dired-sidebar
 	dired-single
 	flycheck
+	smex
 	
 	company	; Code completion, generally better then AC
 	company-c-headers
@@ -53,11 +54,14 @@
 	adoc-mode
 	haml-mode
 	auctex ;; Much nicer LaTeX support
+	web-mode
+	emmet-mode
 	
 	;; Other langs
 	lua-mode
 	csharp-mode ;; C#
 	omnisharp
+	sass-mode
 	tuareg ;; Ocaml tools
         ))
 
