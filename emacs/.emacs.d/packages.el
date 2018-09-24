@@ -22,6 +22,8 @@
 
 ;;;;;;;;;;;;;PACKAGES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+(defvar to-install)
 (setq to-install
       '(aggressive-indent
 	dracula-theme
@@ -34,6 +36,8 @@
 	dired-single
 	flycheck
 	smex
+	rainbow-delimiters
+
 	
 	company	; Code completion, generally better then AC
 	company-c-headers
@@ -67,10 +71,11 @@
 
 (mapc 'install-if-needed to-install)
 
-
 (defun tuareg-abbrev-hook ()
   "Prevents error in Tuareg."
   ())
+
+(set 'flycheck-emacs-lisp-executable "emacs")
 
 (provide 'packages)
 ;;; packages.el ends here
