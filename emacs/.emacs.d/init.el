@@ -4,6 +4,18 @@
 
 ;; Emacs version >= 24 recommended
 
+
+;;;;;;;;;;;;;INITIALIZATION;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold 50000000)
+
+;; warn when opening files bigger than 100MB
+(setq large-file-warning-threshold 100000000)
+
+
+
 ;;;; Code:
 (load "~/.emacs.d/packages.el")
 (load "~/.emacs.d/keybindings.el")
@@ -11,8 +23,8 @@
 
 ;;;;;;;;;;;;;GLOBAL MODES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(aggressive-indent-global-mode t) ;; Force those indents hard!
-(global-linum-mode t) ;; We need those numbers in front of the text.
+(aggressive-indent-global-mode 1) ;; Force those indents hard!
+(global-linum-mode 1) ;; We need those numbers in front of the text.
 (powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
 (ivy-mode 1) ;; autocomplete the M-x thingybar stuff
 (ido-mode 1) ;; Even nicer autocomplete stuff
@@ -22,6 +34,7 @@
 (global-flycheck-mode 1)
 (global-company-mode 1)
 (electric-pair-mode 1)
+(global-prettify-symbols-mode 1)
 ; (yas-global-mode) Hasn't helped me at all. Maybe replace with the skeleton package to make my own snippets.
 
 ;;;;;;;;;;;;;VARIABLES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
