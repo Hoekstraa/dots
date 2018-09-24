@@ -13,15 +13,15 @@
 
 (aggressive-indent-global-mode t) ;; Force those indents hard!
 (global-linum-mode t) ;; We need those numbers in front of the text.
-;; (global-auto-complete-mode t) ;; Let's disable this in favor of Company
-;; (smartparens-global-mode t) ;; Just as annoying as it's useful.
 (powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
 (ivy-mode 1) ;; autocomplete the M-x thingybar stuff
+(ido-mode 1) ;; Even nicer autocomplete stuff
 (require 'centered-cursor-mode)
-(global-centered-cursor-mode) ;; Function definition is void unless normal mode is required first :P
+(global-centered-cursor-mode 1) ;; Function definition is void unless normal mode is required first :P
 (global-hl-line-mode t) ; Highlight cursor line
-(global-flycheck-mode)
-(global-company-mode)
+(global-flycheck-mode 1)
+(global-company-mode 1)
+(electric-pair-mode 1)
 ; (yas-global-mode) Hasn't helped me at all. Maybe replace with the skeleton package to make my own snippets.
 
 ;;;;;;;;;;;;;VARIABLES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
