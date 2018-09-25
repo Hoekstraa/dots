@@ -30,29 +30,27 @@
 
 ;;;;;;;;;;;;;GLOBAL MODES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(aggressive-indent-global-mode 1) ;; Force those indents hard!
-;; (global-linum-mode 1) ;; We need those numbers in front of the text. ;;Nevermind, too much slowdown
+(global-aggressive-indent-mode 1) ;; Force those indents hard!
 (powerline-default-theme) ;; bar all the way, at the bottom of the screen 0.0
 (ivy-mode 1) ;; autocomplete the M-x thingybar stuff
 (ido-mode 1) ;; Even nicer autocomplete stuff
 (global-hl-line-mode t) ; Highlight cursor line
-(global-flycheck-mode 1)
-(global-company-mode 1)
 (electric-pair-mode 1)
-(global-prettify-symbols-mode 1)
 
 ;;;;;;;;;;;;;VARIABLES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;; General UI
 
-(tool-bar-mode -1) ; Don't need a toolbar...
-(define-key menu-bar-tools-menu [games] 0) ; Remove games menu
-(setq inhibit-startup-message t)             ; No startup message
-(blink-cursor-mode 0)                      ; I'm already agitated enough
-(cua-mode t)                  ; Regular classic copy-cut-paste and marking
-(mouse-wheel-mode t)                         ; Mouse wheel enabled
+(tool-bar-mode -1)                             ; Don't need a toolbar...
+(define-key menu-bar-tools-menu [games] 0)     ; Remove games menu
+(setq inhibit-startup-message t)               ; No startup message
+(blink-cursor-mode 0)                          ; I'm already agitated enough
+(cua-mode t)                        ; Regular classic copy-cut-paste and marking
+(mouse-wheel-mode t)                           ; Mouse wheel enabled
 
 ;;;;;; I'm a European, so...
+(defvar european-calendar-style)
+(defvar calendar-week-start-day)
 
 (setq european-calendar-style 't)              ; European style calendar
 (setq calendar-week-start-day 1)               ; Week starts monday
@@ -64,11 +62,12 @@
 (setq read-file-name-completion-ignore-case 't); Ignore case when completing file names
 
 ;;;;;; Tabs, spaces, indents, lines, parentheses, etc.
+(defvar show-paren-style)
 
 (setq indent-tabs-mode 0)
 (setq-default c-basic-offset 4)  ;; use 4 spaces as indentation instead of tabs
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
-(setq blink-matching-paren-distance 0)       ; Blinking parenthesis
+(setq blink-matching-paren-distance 0)         ; Blinking parenthesis
 (setq show-paren-style 'expression)            ; Highlight text between parentheses
 
 ;; No stupid backup/temporary files in every folder, but in a dedicated one
