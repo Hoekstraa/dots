@@ -4,7 +4,6 @@
 
 ;; Emacs version >= 24 recommended
 
-
 ;;;;;;;;;;;;;INITIALIZATION;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; reduce the frequency of garbage collection by making it happen on
@@ -14,20 +13,10 @@
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)
 
-
-
 ;;;; Code:
 (load "~/.emacs.d/packages.el")
-(load-theme 'rebecca t) ; Load theme ASAP
 (load "~/.emacs.d/keybindings.el")
 (load "~/.emacs.d/modeConfig.el")
-
-;; Graveyard ;;;; Stuff I'm going to miss
-
-;; (global-linum-mode 1) ;; We need those numbers in front of the text. ;;Nevermind, too much slowdown
-
-;; (require 'centered-cursor-mode) ; My second favourite feature of emacs slows it down massively
-;; (global-centered-cursor-mode 1) ;; Function definition is void unless normal mode is required first :P
 
 ;;;;;;;;;;;;;GLOBAL MODES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -42,13 +31,12 @@
 
 ;;;;;; General UI
 
-(tool-bar-mode nil)                             ; Don't need a toolbar...
+(tool-bar-mode 0)                             ; Don't need a toolbar...
 (define-key menu-bar-tools-menu [games] 0)     ; Remove games menu
 (setq inhibit-startup-message t)               ; No startup message
-(blink-cursor-mode nil)                        ; I'm already agitated enough
+(blink-cursor-mode 0)                        ; I'm already agitated enough
 (cua-mode t)                                   ; Regular classic copy-cut-paste and marking
 (mouse-wheel-mode t)                           ; Mouse wheel enabled
-(cua-mode t nil (cua-base))                    ; Windows-type keybindings
 
 ;;;;;; I'm a European, so...
 (defvar european-calendar-style)
@@ -104,18 +92,57 @@
 (global-set-key (kbd "C-x 2") 'vsplit-last-buffer)
 (global-set-key (kbd "C-x 3") 'hsplit-last-buffer)
 
+;; Weird theme workaround
+(defvar my:theme 'rebecca)
+(defvar my:theme-window-loaded nil)
+(defvar my:theme-terminal-loaded nil)
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions(lambda (frame)
+					   (select-frame frame)
+					   (if (window-system frame)
+					       (unless my:theme-window-loaded
+						 (if my:theme-terminal-loaded
+						     (enable-theme my:theme)
+						   (load-theme my:theme t))
+						 (setq my:theme-window-loaded t))
+					     (unless my:theme-terminal-loaded
+					       (if my:theme-window-loaded
+						   (enable-theme my:theme)
+						 (load-theme my:theme t))
+					       (setq my:theme-terminal-loaded t)))))
+
+  (progn
+    (load-theme my:theme t)
+    (if (display-graphic-p)
+        (setq my:theme-window-loaded t)
+      (setq my:theme-terminal-loaded t))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '
+ '(blink-cursor-mode nil)
+ '(cua-mode t nil (cua-base))
+ '(custom-enabled-themes (quote (rebecca)))
+ '(custom-safe-themes
+   (quote
+    ("f633d825e380caaaefca46483f7243ae9a663f6df66c5fad66d4cab91f731c86" default)))
  '(font-latex-fontify-script nil)
  '(package-selected-packages
    (quote
     (yasnippet-snippets adoc-mode ascii company ac-clang auctex-lua dired-sidebar dired-single magit i3wm auctex ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake symon powerline paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent)))
-)
+ '(quote (load-theme (quote rebecca) t))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

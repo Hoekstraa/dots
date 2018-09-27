@@ -26,24 +26,19 @@
 (defvar to-install)
 (setq to-install
       '(aggressive-indent
-	dracula-theme
-	centered-cursor-mode ;; We need to focus on what's in front of us!
+	rebecca-theme
 	powerline ;; Colorful bar :)
 	ivy ;; Completes me
-	i3wm
-	magit
+	magit ; unused currently
+	projectile
 	dired-sidebar
 	dired-single
 	flycheck
-	smex
-	rainbow-delimiters
-
-	
+	rainbow-delimiters ; WE NEED MORE COLOR!
 	company	; Code completion, generally better then AC
 	company-c-headers
 	company-web
-	
-	counsel ; More completion opportunities for Ivy
+	counsel ; Complete all the things
 	
 	;;paredit ;; May be useful when I program in Clojure or another Lisp again
 	;;parinfer
@@ -56,7 +51,6 @@
 	;;markup langs
 	markdown-mode
 	adoc-mode
-	haml-mode
 	auctex ;; Much nicer LaTeX support
 	web-mode
 	emmet-mode
@@ -64,7 +58,6 @@
 	;; Other langs
 	lua-mode
 	csharp-mode ;; C#
-	omnisharp
 	sass-mode
 	tuareg ;; Ocaml tools
         ))
@@ -75,6 +68,7 @@
   "Prevents error in Tuareg."
   ())
 
+(defvar flycheck-emacs-lisp-executable)
 (set 'flycheck-emacs-lisp-executable "emacs")
 
 (provide 'packages)
