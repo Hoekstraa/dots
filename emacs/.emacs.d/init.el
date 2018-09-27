@@ -18,6 +18,7 @@
 
 ;;;; Code:
 (load "~/.emacs.d/packages.el")
+(load-theme 'rebecca t) ; Load theme ASAP
 (load "~/.emacs.d/keybindings.el")
 (load "~/.emacs.d/modeConfig.el")
 
@@ -41,12 +42,13 @@
 
 ;;;;;; General UI
 
-(tool-bar-mode -1)                             ; Don't need a toolbar...
+(tool-bar-mode nil)                             ; Don't need a toolbar...
 (define-key menu-bar-tools-menu [games] 0)     ; Remove games menu
 (setq inhibit-startup-message t)               ; No startup message
-(blink-cursor-mode 0)                          ; I'm already agitated enough
-(cua-mode t)                        ; Regular classic copy-cut-paste and marking
+(blink-cursor-mode nil)                        ; I'm already agitated enough
+(cua-mode t)                                   ; Regular classic copy-cut-paste and marking
 (mouse-wheel-mode t)                           ; Mouse wheel enabled
+(cua-mode t nil (cua-base))                    ; Windows-type keybindings
 
 ;;;;;; I'm a European, so...
 (defvar european-calendar-style)
@@ -66,8 +68,8 @@
 
 (setq indent-tabs-mode 0)
 (setq-default c-basic-offset 4)  ;; use 4 spaces as indentation instead of tabs
-(show-paren-mode 1)                            ; Highlight parenthesis pairs
-(setq blink-matching-paren-distance 0)         ; Blinking parenthesis
+(show-paren-mode t)                            ; Highlight parenthesis pairs
+(setq blink-matching-paren-distance 0)         ; Blinking parenthesis = no
 (setq show-paren-style 'expression)            ; Highlight text between parentheses
 
 ;; No stupid backup/temporary files in every folder, but in a dedicated one
@@ -108,18 +110,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(cua-mode t nil (cua-base))
- '(custom-enabled-themes (quote (dracula)))
- '(custom-safe-themes
-   (quote
-    ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" "a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" default)))
+ '
  '(font-latex-fontify-script nil)
  '(package-selected-packages
    (quote
     (yasnippet-snippets adoc-mode ascii company ac-clang auctex-lua dired-sidebar dired-single magit i3wm auctex ac-inf-ruby inf-ruby flymake-ruby flymake-lua flymake symon powerline paredit git-gutter smartparens auto-complete centered-cursor-mode ruby-end haml-mode lua-mode aggressive-indent)))
- '(show-paren-mode t)
- '(tool-bar-mode nil))
+)
 
 (provide 'init)
 ;;; init.el ends here
