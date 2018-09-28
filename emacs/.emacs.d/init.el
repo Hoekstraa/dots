@@ -17,6 +17,7 @@
 (load "~/.emacs.d/packages.el")
 (load "~/.emacs.d/keybindings.el")
 (load "~/.emacs.d/modeConfig.el")
+(load "~/.emacs.d/org.el")
 
 ;;;;;;;;;;;;;GLOBAL MODES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
