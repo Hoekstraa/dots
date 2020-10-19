@@ -1,0 +1,11 @@
+#Page up/page down
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+set colored-stats On
+set completion-ignore-case On
+set completion-map-case On
+set show-all-if-unmodified on
+set show-all-if-ambiguous on
+
+$include /etc/inputrc

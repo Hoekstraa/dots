@@ -1,0 +1,35 @@
+export HISTCONTROL=ignoreboth:erasedups
+export HISTSIZE=10000
+shopt -s histappend
+shopt -s cmdhist
+shopt -u huponexit 
+
+# Auto-complete command from history
+export INPUTRC=~/.inputrc
+
+PATH="$PATH:$HOME/scripts"
+export PATH
+
+PS1="; "
+
+alias grep='grep --color=auto'
+alias du='du -sh' # Only show the total in human readable format
+
+
+platform='unknown'
+unamestr=$(uname)
+if [ "$unamestr" = 'Linux' ]; then
+   platform='linux'
+elif [ "$unamestr" = 'FreeBSD' ]; then
+   platform='freebsd'
+fi
+
+if [ "$platform" = 'linux' ]; then
+
+   alias ls='ls -Glashop --color=auto'
+
+elif [ "$platform" = 'freebsd' ]; then
+
+   alias ls='ls -G'
+
+fi

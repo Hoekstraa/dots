@@ -1,0 +1,39 @@
+set nocompatible
+set termguicolors
+set showmatch
+set mouse=a
+set clipboard+=unnamedplus
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+
+set wildmode=longest,list
+set path+=**
+set ignorecase
+set hlsearch
+set incsearch
+
+set title
+set t_Cp=256
+set background=dark
+syntax on
+colorscheme challenger_deep
+
+highlight Cursor guifg=black guibg=white
+highlight iCursor guifg=black guibg=white
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+
+filetype plugin indent on
+syntax on
+
+set cursorline
+set laststatus=2
+set number
+
+set hidden
+set nowrap
+set linebreak

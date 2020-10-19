@@ -1,32 +1,15 @@
 # dots
-My (new) dotfiles
+My (new new) dotfiles
 
-## Software required:
+## Requirements
 
-* GNU Stow
-* nvim
-    * Vim-plug
-    * Fura Code Regular Nerd Font Complete Mono
-* Conky
-    * Fira fonts
-    * Raleway fonts
-* i3wm
-    * Compton
-* Openbox
-    * 1977 Openbox
-* Neofetch
-    * w3m
+I work on many different operating systems and
+want my dotfiles to work flawlessly in as many of them as possible.
 
-And of course the programs the dotfiles are meant for.
-
-
+Because of this, there is a limit on what tools can be used.
+My previous dotfiles depended on GNU Stow for example, which isn't readily available everywhere (I believe Alpine Linux used to be one of those places).
+Thus, I will try to prevent using tools like these.
 
 ## How to use
 
-This repo is compatible with GNU Stow, so to install the dotfiles you just need to clone this repo to your homefolder and run `stow <program>` inside it.
-
-Install Vim-plug with 
-``curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim``
-
-run the following command in nvim: `:PlugInstall`
+Run the `installer.sh` script.

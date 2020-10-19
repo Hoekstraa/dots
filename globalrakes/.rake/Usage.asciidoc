@@ -1,7 +1,0 @@
-# Global rakefiles
-
-## How to use
-
-```
-rake -g [name]
-```
