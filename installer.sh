@@ -3,15 +3,15 @@
 # Makes sure script can be called from anywhere.
 BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 
-ln -sf $BASEDIR/bash/bashrc $HOME/.bashrc
-ln -sf $BASEDIR/readline/inputrc $HOME/.inputrc
+ln -sfT $BASEDIR/bash/bashrc $HOME/.bashrc
+ln -sfT $BASEDIR/readline/inputrc $HOME/.inputrc
 
-ln -sf $BASEDIR/vim/vimrc $HOME/.vimrc
+ln -sfT $BASEDIR/vim/vimrc $HOME/.vimrc
 mkdir -vp $HOME/.vim/
-ln -sf $BASEDIR/vim/colors $HOME/.vim/colors
+ln -sfT $BASEDIR/vim/colors $HOME/.vim/colors
 
 mkdir -vp $HOME/.config
-ln -sf $BASEDIR/nvim $HOME/.config/nvim
+ln -sfT $BASEDIR/nvim $HOME/.config/nvim
 
 
-ln -sf $BASEDIR/scripts $HOME/scripts
+ln -sfT $BASEDIR/scripts $HOME/scripts
