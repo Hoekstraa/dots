@@ -12,6 +12,10 @@ ln -sfT $BASEDIR/vim/colors $HOME/.vim/colors
 
 mkdir -vp $HOME/.config
 ln -sfT $BASEDIR/nvim $HOME/.config/nvim
+ln -sfT $BASEDIR/dunst $HOME/.config/dunst
+ln -sfT $BASEDIR/dwm $HOME/.config/dwm
+ln -sfT $BASEDIR/zathura $HOME/.config/zathura
 
 
 ln -sfT $BASEDIR/scripts $HOME/scripts
+ln -sfT $BASEDIR/fonts $HOME/.fonts
