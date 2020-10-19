@@ -10,6 +10,9 @@ ln -sfT $BASEDIR/vim/vimrc $HOME/.vimrc
 mkdir -vp $HOME/.vim/
 ln -sfT $BASEDIR/vim/colors $HOME/.vim/colors
 
+mkdir -vp $HOME/.gnupg/
+ln -sfT $BASEDIR/gpg/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
+
 mkdir -vp $HOME/.config
 ln -sfT $BASEDIR/nvim $HOME/.config/nvim
 ln -sfT $BASEDIR/dunst $HOME/.config/dunst
