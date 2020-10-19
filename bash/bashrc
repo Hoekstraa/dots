@@ -6,6 +6,7 @@ shopt -u huponexit
 
 # Auto-complete command from history
 export INPUTRC=~/.inputrc
+export EDITOR="vi"
 
 PATH="$PATH:$HOME/scripts"
 export PATH
@@ -14,11 +15,18 @@ PS1="; "
 
 alias grep='grep --color=auto'
 alias du='du -sh' # Only show the total in human readable format
+alias gits='git status'
+alias gitc='git commit'
+alias gitp='git push'
+alias gita='git add'
+alias gitd='git diff'
+alias gitl='git log'
 
 if [ "$(command -v nvim)" != '' ]; then
     alias v="nvim"
     alias vi="nvim"
     alias vim="nvim"
+    export EDITOR="nvim"
 fi
 
 platform='unknown'
@@ -31,9 +39,7 @@ fi
 
 if [ "$platform" = 'linux' ]; then
 
-    alias ls='ls -Glashop --color=auto'
-
-
+    alias ls='ls -Glashop --color=auto --group-directories-first'
 
 elif [ "$platform" = 'freebsd' ]; then
 
