@@ -12,16 +12,6 @@ function! PackInit() abort
     call minpac#add('vim-airline/vim-airline')
     call minpac#add('vim-airline/vim-airline-themes')
     call minpac#add('OmniSharp/omnisharp-vim')
-    "call minpac#add('NLKNguyen/papercolor-theme')
-    "call minpac#add('challenger-deep-theme/vim')
-    "call minpac#add('liuchengxu/space-vim-dark')
-    "call minpac#add('nightsense/seabird')
-    "call minpac#add('arcticicestudio/nord-vim')
-    "call minpac#add('joshdick/onedark.vim')
-    "call minpac#add('drewtempelmeyer/palenight.vim')
-    "call minpac#add('gmist/vim-palette')
-    "call minpac#add('ayu-theme/ayu-vim')
-    "call minpac#add('jacoborus/tender.vim')
 endfunction
 
 " Define user commands for updating/cleaning the plugins.
@@ -69,7 +59,6 @@ set t_Cp=256
 "colorscheme president
 "colorscheme base16-unikitty-dark
 colorscheme challenger_deep
-
 
 highlight Cursor guifg=black guibg=white
 highlight iCursor guifg=black guibg=white

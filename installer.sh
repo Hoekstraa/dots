@@ -22,3 +22,5 @@ ln -sfT $BASEDIR/zathura $HOME/.config/zathura
 
 ln -sfT $BASEDIR/scripts $HOME/scripts
 ln -sfT $BASEDIR/fonts $HOME/.fonts
+
+ln -sfT $BASEDIR/x11/xinitrc $HOME/.xinitrc
