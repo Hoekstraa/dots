@@ -3,6 +3,7 @@
 # Makes sure script can be called from anywhere.
 BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 
+ln -sfT $BASEDIR/tmux/tmux.conf $HOME/.tmux.conf
 ln -sfT $BASEDIR/bash/bashrc $HOME/.bashrc
 ln -sfT $BASEDIR/readline/inputrc $HOME/.inputrc
 

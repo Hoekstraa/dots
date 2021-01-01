@@ -96,6 +96,10 @@ augroup c_is_c
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 augroup END
 
+augroup filetype_ruby
+    autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=syntax foldnestmax=2
+augroup END
+
 "}}}
 
 "{{{ Mappings

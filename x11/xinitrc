@@ -10,14 +10,18 @@ session=${1:-monster}
 case $session in
     kde                             ) exec startplasma-x11;;
     dwm                             ) exec dwm;;
-    monster|monsterwm               ) 
+    monster|monsterwm               )
         ~/.fehbg
         redshift -l 53.32270:5.99131 &
         dunst &
         gpg-connect-agent /bye &
+        compton &
+        conky -c ~/.config/conky/conky.conkyrc -d
         export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-        exec monsterwm | bipolarbar;;
-    
+
+        monsterbarfifo | some_sorta_bar &
+        exec monsterwm > /tmp/monsterbar;;
+
     # Unknown gets ran as command:
     *                               ) exec $1;;
 esac

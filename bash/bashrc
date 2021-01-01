@@ -53,3 +53,8 @@ elif [ "$platform" = 'freebsd' ]; then
     alias ls='ls -G'
 
 fi
+
+# Start tmux when possible
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
