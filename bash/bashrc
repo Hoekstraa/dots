@@ -4,6 +4,15 @@ shopt -s histappend
 shopt -s cmdhist
 shopt -u huponexit
 shopt -s autocd
+shopt -s cdspell # Fix cd errors in interactive shell
+
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
 # Auto-complete command from history
 export INPUTRC=~/.inputrc
@@ -18,10 +27,20 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 PS1="; "
+git_show_branch() {
+    __gsb_BRANCH=$(git symbolic-ref -q --short HEAD 2>/dev/null)
+    if [ -n "$__gsb_BRANCH" ]; then
+        echo "$__gsb_BRANCH"
+    fi
+}
+PS1="\$(git_show_branch)$PS1"
 
+
+export GREP_OPTIONS='--color=auto'
 alias grep='grep --color=auto'
 alias du='du -sh' # Only show the total in human readable format
 alias df='df -h' # Show in human readable format
+alias mkdir='mkdir --parents' # Don't be mad when I try to make multiple folders at once.
 alias gits='git status'
 alias gitc='git commit'
 alias gitp='git push'
@@ -54,7 +73,12 @@ elif [ "$platform" = 'freebsd' ]; then
 
 fi
 
+# "You should always add the following lines to your .bashrc or whatever initialization  file
+# is used for all shell invocations:"
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # Start tmux when possible
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ $DISPLAY ]]; then
   exec tmux
 fi
