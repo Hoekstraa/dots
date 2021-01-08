@@ -1,11 +1,23 @@
+$include /etc/inputrc
+
 #Page up/page down
 "\e[B": history-search-forward
 "\e[A": history-search-backward
 
 set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On 
 set completion-ignore-case On
 set completion-map-case On
 set show-all-if-unmodified on
 set show-all-if-ambiguous on
 
-$include /etc/inputrc
+set match-hidden-files on
+set bell-style off
+

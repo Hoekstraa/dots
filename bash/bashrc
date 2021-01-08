@@ -1,11 +1,24 @@
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=10000
+
+# Set config file directories
+export RLWRAP_HOME="$XDG_DATA_HOME"/rlwrap
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$HOME"/.xinitrc
+export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
+export ANDROID_PREFS_ROOT="$XDG_CONFIG_HOME"/android
+export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME"/android/emulator
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
+export HISTFILE="$XDG_DATA_HOME"/bash/history 
+
+
 shopt -s histappend
 shopt -s cmdhist
 shopt -u huponexit
 shopt -s autocd
 shopt -s cdspell # Fix cd errors in interactive shell
 
+# Advanced bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -18,26 +31,27 @@ fi
 export INPUTRC=~/.inputrc
 export EDITOR="vi"
 
+# Add scripts to path
 if [ -d "$HOME/scripts" ] ; then
     PATH="$HOME/scripts:$PATH"
 fi
-
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-PS1="; "
+#Set prompt
+PS1="> "
 git_show_branch() {
     __gsb_BRANCH=$(git symbolic-ref -q --short HEAD 2>/dev/null)
     if [ -n "$__gsb_BRANCH" ]; then
-        echo "$__gsb_BRANCH"
+        echo " $__gsb_BRANCH"
     fi
 }
 PS1="\$(git_show_branch)$PS1"
 
 
-export GREP_OPTIONS='--color=auto'
 alias grep='grep --color=auto'
+alias zgrep='zgrep --color=auto'
 alias du='du -sh' # Only show the total in human readable format
 alias df='df -h' # Show in human readable format
 alias mkdir='mkdir --parents' # Don't be mad when I try to make multiple folders at once.
@@ -47,6 +61,8 @@ alias gitp='git push'
 alias gita='git add'
 alias gitd='git diff'
 alias gitl='git log'
+
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 if [ "$(command -v nvim)" != '' ]; then
     alias v="nvim -p"
@@ -65,7 +81,7 @@ fi
 
 if [ "$platform" = 'linux' ]; then
 
-    alias ls='ls -Glashop --color=auto --group-directories-first'
+    alias ls='ls -Glshop --color=auto --group-directories-first'
 
 elif [ "$platform" = 'freebsd' ]; then
 
