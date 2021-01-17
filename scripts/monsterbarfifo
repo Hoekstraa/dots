@@ -1,25 +1,37 @@
-#!/bin/bash
+#!/bin/sh
 pipe=/tmp/monsterbar
 if [[ ! -p $pipe ]]; then
     mkfifo $pipe
 fi
 
-tags=('een' 'twee' 'drie' 'vier' 'vijf' 'zes' 'zeven' 'acht' 'negen' 'tien')
-layouts=('[]=' '[ ]' 'TTT' '[#]')
+tags[0]='een'
+tags[1]='twee'
+tags[2]='drie'
+tags[3]='vier'
+tags[4]='vijf'
+tags[5]='zes'
+tags[6]='zeven'
+tags[7]='acht'
+tags[8]='negen'
+tags[9]='tien'
+#layouts=('[]=' '[ ]' 'TTT' '[#]')
 
 printBar(){
     unset bar
-        
+    IFS=' '
+    read -ra desktops <<"$1"
     desktops=($1)
+    [[ "${desktops[@]}" =~ ^(([[:digit:]]+:)+[[:digit:]]+ ?)+$ ]] || return
+
     for desktop in "${desktops[@]}"
     do
         IFS=':' read -r d w m c u <<< "$desktop"
         label="${tags[$d]}"
     
         # Current open desktop? Change fg
-        ((c)) && fg="&4" || fg="&1"
+        ((c)) && fg="&6" before="[" after="]" || fg="&1" before=" " after=" "
 
-        bar+="$fg$label "
+        bar+="$fg$before$label$after "
     done
 
     echo "$bar&C&1$(date)"
