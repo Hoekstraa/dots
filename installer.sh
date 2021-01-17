@@ -21,9 +21,8 @@ ln -sfT $BASEDIR/zathura $HOME/.config/zathura
 ln -sfT $BASEDIR/conky $HOME/.config/conky
 ln -sfT $BASEDIR/git $HOME/.config/git
 
-ln -sfT $BASEDIR/scripts $HOME/scripts
+ln -sfT $BASEDIR/scripts $HOME/.scripts
 ln -sfT $BASEDIR/fonts $HOME/.fonts
 
 ln -sfT $BASEDIR/x11/xinitrc $HOME/.xinitrc
-mkdir -vp $HOME/.config/X11
-ln -sfT $BASEDIR/x11/xserverrc $HOME/.config/X11/xserverrc
+ln -sfT $BASEDIR/x11/xserverrc $HOME/.xserverrc
