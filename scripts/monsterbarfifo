@@ -4,14 +4,31 @@ if [[ ! -p $pipe ]]; then
     mkfifo $pipe
 fi
 
+tags=('een' 'twee' 'drie' 'vier' 'vijf' 'zes' 'zeven' 'acht' 'negen' 'tien')
+layouts=('[]=' '[ ]' 'TTT' '[#]')
+
 printBar(){
-    echo "$1&C$(date)&R$(acpi -b)"
+    unset bar
+        
+    desktops=($1)
+    for desktop in "${desktops[@]}"
+    do
+        IFS=':' read -r d w m c u <<< "$desktop"
+        label="${tags[$d]}"
+    
+        # Current open desktop? Change fg
+        ((c)) && fg="&4" || fg="&1"
+
+        bar+="$fg$label "
+    done
+
+    echo "$bar&C&1$(date)"
 }
 
 updateOnWM(){
     while true
     do
-        inotifywait $pipe -e modify
+        inotifywait $pipe -e modify > /dev/null 2> /dev/null # Wait *silently* until file changes
         printBar "$(tail -1 /tmp/monsterbar)"
     done
 }
