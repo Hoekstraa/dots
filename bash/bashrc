@@ -1,5 +1,6 @@
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=10000
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # Set config file directories
 export RLWRAP_HOME="$XDG_DATA_HOME"/rlwrap
@@ -9,8 +10,6 @@ export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 export ANDROID_PREFS_ROOT="$XDG_CONFIG_HOME"/android
 export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME"/android/emulator
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
-export HISTFILE="$XDG_DATA_HOME"/bash/history 
-
 
 shopt -s histappend
 shopt -s cmdhist
@@ -61,6 +60,7 @@ alias gitp='git push'
 alias gita='git add'
 alias gitd='git diff'
 alias gitl='git log'
+alias gpgreload='gpg-connect-agent updatestartuptty /bye > /dev/null'
 
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
