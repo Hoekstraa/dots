@@ -3,11 +3,13 @@
 # Makes sure script can be called from anywhere.
 BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 
-mkdir -vp $HOME/.config/tmux
-ln -sfT $BASEDIR/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
+ln -sfT $BASEDIR/tmux/tmux.conf $HOME/.tmux.conf
 ln -sfT $BASEDIR/bash/bashrc $HOME/.bashrc
 ln -sfT $BASEDIR/readline/inputrc $HOME/.inputrc
 ln -sfT $BASEDIR/vim/ $HOME/.vim
+
+mkdir -vp $HOME/.config/cmus
+ln -sfT $BASEDIR/cmus/rc $HOME/.config/cmus/rc
 
 mkdir -vp $HOME/.gnupg/
 ln -sfT $BASEDIR/gpg/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
