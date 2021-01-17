@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 pipe=/tmp/monsterbar
 if [[ ! -p $pipe ]]; then
     mkfifo $pipe
@@ -18,8 +18,8 @@ tags[9]='tien'
 
 printBar(){
     unset bar
-    IFS=' '
-    read -ra desktops <<"$1"
+    #IFS=' '
+    #read -ra desktops <<"$1"
     desktops=($1)
     [[ "${desktops[@]}" =~ ^(([[:digit:]]+:)+[[:digit:]]+ ?)+$ ]] || return
 
