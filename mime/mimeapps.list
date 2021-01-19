@@ -1,0 +1,8 @@
+[Default Applications]
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/discord-378483863044882443=discord-378483863044882443.desktop
+text/html=firefox-esr.desktop
+x-scheme-handler/http=firefox-esr.desktop
+x-scheme-handler/https=firefox-esr.desktop
+x-scheme-handler/about=firefox-esr.desktop
+x-scheme-handler/unknown=firefox-esr.desktop
