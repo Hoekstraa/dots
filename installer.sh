@@ -16,6 +16,7 @@ ln -sfT $BASEDIR/dwm $HOME/.config/dwm
 ln -sfT $BASEDIR/zathura $HOME/.config/zathura
 ln -sfT $BASEDIR/conky $HOME/.config/conky
 ln -sfT $BASEDIR/git $HOME/.config/git
+ln -sfT $BASEDIR/newsboat $HOME/.config/newsboat
 
 mkdir -vp $HOME/.config/cmus
 ln -sfT $BASEDIR/cmus/rc $HOME/.config/cmus/rc

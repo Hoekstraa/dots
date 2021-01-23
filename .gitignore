@@ -2,3 +2,4 @@ fonts/.uuid
 fonts/fonts.dir
 nvim/pack
 nvim/.netrwhist
+newsboat/*
