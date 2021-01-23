@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if ! pgrep -x cmus ; then
-  st -e cmus
+  st -e cmus &
+  sleep 0.5 && cmus-remote --play
 else
   cmus-remote --pause
 fi
