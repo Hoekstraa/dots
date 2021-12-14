@@ -1,0 +1,20 @@
+#!/bin/sh
+
+ESC_SEQ="\033[38;5;"
+COL_CY=$ESC_SEQ"14m"
+COL_MA=$ESC_SEQ"13m"
+COL_WI=$ESC_SEQ"15m"
+RESET="\033[m"
+
+COLORS="$COL_CY $COL_MA $COL_WI $COL_MA $COL_CY"
+WIDTH=`stty size | cut -d ' ' -f 2`
+
+for COLR in $COLORS
+do
+printf "$COLR"
+for j in `seq 5`; do
+printf '%.0s\xe2\x96\x88' `seq $WIDTH`
+printf "\n"
+done
+done
+printf "$RESET" 
