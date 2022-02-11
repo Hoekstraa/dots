@@ -1,8 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-    signingkey = CB1396FF56612D2C
-	name = Jan Hoekstra
+    signingkey = DA64DE4EF2336FCB
+	name = Zoë Hoekstra
 	email = altlockg@gmail.com
 
 [commit]
