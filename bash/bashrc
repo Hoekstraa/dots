@@ -37,6 +37,9 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
 #Set prompt
 PS1="> "
@@ -54,6 +57,7 @@ alias zgrep='zgrep --color=auto'
 alias du='du -sh' # Only show the total in human readable format
 alias df='df -h' # Show in human readable format
 alias mkdir='mkdir --parents' # Don't be mad when I try to make multiple folders at once.
+alias xclip='xclip -sel clip' # Have xclip always overwrite global clipboard
 alias gits='git status'
 alias gitc='git commit'
 alias gitp='git push'
