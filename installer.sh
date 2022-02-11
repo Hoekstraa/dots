@@ -2,30 +2,46 @@
 
 # Makes sure script can be called from anywhere.
 BASEDIR="$(cd "$(dirname "$0")" && pwd)"
+PLATFORM="$(uname | tr '[:upper:]' '[:lower:]')"
 
-ln -sfT $BASEDIR/tmux/tmux.conf $HOME/.tmux.conf
-ln -sfT $BASEDIR/bash/bashrc $HOME/.bashrc
-ln -sfT $BASEDIR/readline/inputrc $HOME/.inputrc
-ln -sfT $BASEDIR/vim/ $HOME/.vim
+link() {
+    # ln -sfT replacement in case of Mac OS
+    case $PLATFORM in
+        linux*)
+            ln -sfT "$1" "$2"
+            ;;
+        darwin*)
+            ln -sfh "$1" "$2"
+            ;;
+        *)
+            ln -sfT "$1" "$2"
+            ;;
+    esac
+}   
 
-mkdir -vp $HOME/.config/
-ln -sfT $BASEDIR/mime/mimeapps.list $HOME/.config/mimeapps.list
-ln -sfT $BASEDIR/nvim $HOME/.config/nvim
-ln -sfT $BASEDIR/dunst $HOME/.config/dunst
-ln -sfT $BASEDIR/dwm $HOME/.config/dwm
-ln -sfT $BASEDIR/zathura $HOME/.config/zathura
-ln -sfT $BASEDIR/conky $HOME/.config/conky
-ln -sfT $BASEDIR/git $HOME/.config/git
-ln -sfT $BASEDIR/newsboat $HOME/.config/newsboat
+link "$BASEDIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+link "$BASEDIR/bash/bashrc" "$HOME/.bashrc"
+link "$BASEDIR/readline/inputrc" "$HOME/.inputrc"
+link "$BASEDIR/vim/" "$HOME/.vim"
 
-mkdir -vp $HOME/.config/cmus
-ln -sfT $BASEDIR/cmus/rc $HOME/.config/cmus/rc
+mkdir -vp "$HOME/.config/"
+link "$BASEDIR/mime/mimeapps.list" "$HOME/.config/mimeapps.list"
+link "$BASEDIR/nvim" "$HOME/.config/nvim"
+link "$BASEDIR/dunst" "$HOME/.config/dunst"
+link "$BASEDIR/dwm" "$HOME/.config/dwm"
+link "$BASEDIR/zathura" "$HOME/.config/zathura"
+link "$BASEDIR/conky" "$HOME/.config/conky"
+link "$BASEDIR/git" "$HOME/.config/git"
+link "$BASEDIR/newsboat" "$HOME/.config/newsboat"
 
-mkdir -vp $HOME/.gnupg/
-ln -sfT $BASEDIR/gpg/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
+mkdir -vp "$HOME/.config/cmus"
+link "$BASEDIR/cmus/rc" "$HOME/.config/cmus/rc"
 
-ln -sfT $BASEDIR/scripts $HOME/.scripts
-ln -sfT $BASEDIR/fonts $HOME/.fonts
+mkdir -vp "$HOME/.gnupg/"
+link "$BASEDIR/gpg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 
-ln -sfT $BASEDIR/x11/xinitrc $HOME/.xinitrc
-ln -sfT $BASEDIR/x11/xserverrc $HOME/.xserverrc
+link "$BASEDIR/scripts" "$HOME/.scripts"
+link "$BASEDIR/fonts" "$HOME/.fonts"
+
+link "$BASEDIR/x11/xinitrc" "$HOME/.xinitrc"
+link "$BASEDIR/x11/xserverrc" "$HOME/.xserverrc"
