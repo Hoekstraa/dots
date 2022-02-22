@@ -29,6 +29,7 @@ link "$BASEDIR/mime/mimeapps.list" "$HOME/.config/mimeapps.list"
 link "$BASEDIR/nvim" "$HOME/.config/nvim"
 link "$BASEDIR/dunst" "$HOME/.config/dunst"
 link "$BASEDIR/dwm" "$HOME/.config/dwm"
+link "$BASEDIR/stumpwm" "$HOME/.config/stumpwm"
 link "$BASEDIR/zathura" "$HOME/.config/zathura"
 link "$BASEDIR/conky" "$HOME/.config/conky"
 link "$BASEDIR/git" "$HOME/.config/git"
@@ -45,3 +46,6 @@ link "$BASEDIR/fonts" "$HOME/.fonts"
 
 link "$BASEDIR/x11/xinitrc" "$HOME/.xinitrc"
 link "$BASEDIR/x11/xserverrc" "$HOME/.xserverrc"
+
+# For 24-bit color in CLI Emacs, a terminfo definition needs to exist
+tic -x -o ~/.terminfo "$HOME/terminfo/xterm-24bit.terminfo"

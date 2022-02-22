@@ -67,7 +67,9 @@ alias gitl='git log'
 alias gpgreload='gpg-connect-agent updatestartuptty /bye > /dev/null'
 alias feed='newsboat'
 alias feedreload='newsboat -xreload'
-
+alias mail='mutt'
+alias mailreload='mbsync -aV'
+alias emacs='env TERM=xterm-24bit emacs -nw'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 if [ "$(command -v nvim)" != '' ]; then
