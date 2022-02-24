@@ -34,6 +34,7 @@ link "$BASEDIR/zathura" "$HOME/.config/zathura"
 link "$BASEDIR/conky" "$HOME/.config/conky"
 link "$BASEDIR/git" "$HOME/.config/git"
 link "$BASEDIR/newsboat" "$HOME/.config/newsboat"
+link "$BASEDIR/karabiner" "$HOME/.config/karabiner"
 
 mkdir -vp "$HOME/.config/cmus"
 link "$BASEDIR/cmus/rc" "$HOME/.config/cmus/rc"
@@ -48,4 +49,4 @@ link "$BASEDIR/x11/xinitrc" "$HOME/.xinitrc"
 link "$BASEDIR/x11/xserverrc" "$HOME/.xserverrc"
 
 # For 24-bit color in CLI Emacs, a terminfo definition needs to exist
-tic -x -o ~/.terminfo "$HOME/terminfo/xterm-24bit.terminfo"
+tic -x -o ~/.terminfo "$BASEDIR/terminfo/xterm-24bit.terminfo"
