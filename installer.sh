@@ -48,4 +48,4 @@ link "$BASEDIR/x11/xinitrc" "$HOME/.xinitrc"
 link "$BASEDIR/x11/xserverrc" "$HOME/.xserverrc"
 
 # For 24-bit color in CLI Emacs, a terminfo definition needs to exist
-tic -x -o ~/.terminfo "$HOME/terminfo/xterm-24bit.terminfo"
+tic -x -o ~/.terminfo "./terminfo/xterm-24bit.terminfo"
