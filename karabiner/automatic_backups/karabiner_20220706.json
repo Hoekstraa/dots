@@ -16,7 +16,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Change caps to control. (Post Escape if pressed alone)",
+                        "description": "Change caps to control. (Post caps if pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
@@ -34,7 +34,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "caps_lock"
                                     }
                                 ],
                                 "type": "basic"
