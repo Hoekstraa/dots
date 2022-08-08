@@ -1,9 +1,11 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-    signingkey = DA64DE4EF2336FCB
+    signingkey = F9B7B7D8130F3323
 	name = Zoë Hoekstra
 	email = altlockg@gmail.com
 
 [commit]
 	gpgsign = true
+[gpg]
+	program = gpg
