@@ -1,12 +1,17 @@
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=10000
 
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-  . "${HOME}/.gpg-agent-info"
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
-  export SSH_AGENT_PID
+# Needed for GPG SSH auth
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+# Start gpg-agent
+if ! pgrep gpg-agent > /dev/null; then
+    gpgconf --launch gpg-agent &
 fi
+
+# Needed for GPG git/etc. auth
+GPG_TTY=$(tty)
+export GPG_TTY
 
 # Set config file directories
 export RLWRAP_HOME="$XDG_DATA_HOME"/rlwrap
@@ -83,6 +88,10 @@ if [ "$(command -v nvim)" != '' ]; then
     alias vi="nvim -p"
     alias vim="nvim -p"
     export EDITOR="nvim -p"
+elif [ "$(command -v vim)" != '' ]; then
+    alias v=vim
+    alias vi=vim
+    export EDITOR=vim
 fi
 
 platform='unknown'
@@ -105,7 +114,7 @@ fi
 
 # "You should always add the following lines to your .bashrc or whatever initialization  file
 # is used for all shell invocations:"
-GPG_TTY=$(tty)
-export GPG_TTY
+#GPG_TTY=$(tty)
+#export GPG_TTY
 
-gpg-connect-agent updatestartuptty /bye >/dev/null
+#gpg-connect-agent updatestartuptty /bye >/dev/null
