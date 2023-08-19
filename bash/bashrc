@@ -112,9 +112,4 @@ elif [ "$platform" = 'freebsd' ]; then
 
 fi
 
-# "You should always add the following lines to your .bashrc or whatever initialization  file
-# is used for all shell invocations:"
-#GPG_TTY=$(tty)
-#export GPG_TTY
-
 #gpg-connect-agent updatestartuptty /bye >/dev/null
