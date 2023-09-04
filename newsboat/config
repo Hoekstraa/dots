@@ -6,11 +6,13 @@ browser "w3m %u"
 
 cleanup-on-quit yes
 refresh-on-startup yes
-reload-threads 10
+reload-threads 50
 reload-time 240
 auto-reload yes
 show-keymap-hint false
 # bind-key ^R reload-all
+
+text-width 100
 
 notify-always no
 notify-format "Newsboat: %d new articles (%n unread articles, %f unread feeds)"

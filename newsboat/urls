@@ -1,7 +1,34 @@
-http://feeds.feedburner.com/feedburner/Talos?format=xml security software
+http://feeds.feedburner.com/feedburner/Talos?format=xml security software news
+https://hnrss.org/newest?points=100&comments=25 news software random
+https://archlinux.org/feeds/news/ news software
+
 https://adamdrake.com/posts/index.xml blog software business
 https://www.joelonsoftware.com/feed/ blog software
+https://fabiensanglard.net/rss.xml blog software
+https://blog.regehr.org/feed blog software academic
+https://www.fluentcpp.com/feed/ blog programming software c++
+https://bartoszmilewski.com/feed/ blog programming cattheory
+https://unixsheikh.com/feed.rss blog software
+https://dataswamp.org/~solene/rss.xml blog software
+https://bsdly.blogspot.com/feeds/posts/default blog software
+https://flak.tedunangst.com/rss blog software
+https://www.jntrnr.com/atom.xml ~JT blog software
+https://250bpm.com/rss.xml blog variety software
+http://ratfactor.com/atom.xml blog software
+http://jasonwryan.com/atom.xml blog software
+https://www.scattered-thoughts.net/rss.xml blog software
 
 https://feeds.feedburner.com/StudyHacks?format=xml blog minimalism
 https://zenhabits.net/feed/ blog minimalism
-https://250bpm.com/rss.xml blog variety
+
+http://nethack4.org/blog/atom.xml blog games
+https://www.gridsagegames.com/blog/feed/ blog games
+https://www.factorio.com/blog/rss blog games
+https://simblob.blogspot.com/feeds/posts/default "~Red Blob Games" blog games
+https://www.markrjohnsongames.com/feed/ "~Ultima Ratio Regum" blog games
+
+https://youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ yt ahoy
+https://youtube.com/feeds/videos.xml?channel_id=UC2_IYqb1Tc_8Azh7rByedPA yt vinesauce
+https://youtube.com/feeds/videos.xml?channel_id=UCaoqVlqPTH78_xjTjTOMcmQ yt miziziz
+
+https://feeds.buzzsprout.com/2033817.rss podcast security
