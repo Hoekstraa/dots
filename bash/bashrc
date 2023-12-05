@@ -15,7 +15,7 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
-# Needed for pinentry
+# Tell GPG which terminal pinentry should be ran on
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Set config file directories
@@ -98,6 +98,9 @@ alias mail='mutt'
 alias mailreload='mbsync -aV'
 alias emacs='env TERM=xterm-24bit emacs -nw'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+
+alias git='gpg-connect-agent updatestartuptty /bye >/dev/null; git'
+alias ssh='gpg-connect-agent updatestartuptty /bye >/dev/null; ssh'
 
 platform='unknown'
 unamestr=$(uname)
