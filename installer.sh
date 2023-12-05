@@ -51,3 +51,4 @@ link "$BASEDIR/x11/xserverrc" "$HOME/.xserverrc"
 # For 24-bit color in CLI Emacs, a terminfo definition needs to exist
 tic -x -o ~/.terminfo "$BASEDIR/terminfo/xterm-24bit.terminfo"
 ./gnome/settings.sh
+./pkgs/install-pkgs.sh

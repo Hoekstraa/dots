@@ -1,0 +1,6 @@
+git
+firefox
+pass
+gnupg
+wl-clipboard
+emacs
