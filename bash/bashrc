@@ -1,5 +1,9 @@
 # -*- mode: sh -*-
 
+# source bash completion script
+source /usr/share/bash-completion/bash_completion
+
+# More history!
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=10000
 
@@ -84,6 +88,7 @@ export EDITOR="$editor"
 
 # A bunch of aliases, just cause.
 alias ec='emacsclient -n -r'
+alias agenda='emacsclient -n -r -e "(progn (org-agenda-list)(delete-other-windows))" > /dev/null'
 alias open='xdg-open'
 alias grep='grep --color=auto'
 alias zgrep='zgrep --color=auto'
@@ -120,6 +125,17 @@ elif [ "$platform" = 'freebsd' ]; then
 
 fi
 
+if [ "$(command -v crc)" != '' ]; then
+	eval $(crc oc-env)
+fi
+
+# Make Firefox run native Wayland framing, uses less resources and allows for native features
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+	export MOZ_ENABLE_WAYLAND=1
+fi
+
 if [ "$(command -v opam)" != '' ]; then
 	eval $(opam env)
 fi
+
+PATH="/home/zonoia/.local/share/gem/ruby/3.0.0/bin:$PATH"
