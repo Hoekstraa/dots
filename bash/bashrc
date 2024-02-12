@@ -126,7 +126,7 @@ elif [ "$platform" = 'freebsd' ]; then
 fi
 
 if [ "$(command -v crc)" != '' ]; then
-	eval $(crc oc-env)
+	eval $(crc oc-env) &
 fi
 
 # Make Firefox run native Wayland framing, uses less resources and allows for native features
