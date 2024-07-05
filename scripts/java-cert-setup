@@ -1,0 +1,8 @@
+#!/bin/bash
+JAVA_DIR=/opt/homebrew/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home
+certpath=~/Library/Certificates
+
+for cert in "$certpath"/*
+do
+    sudo $JAVA_DIR/bin/keytool -import -storepass changeit -noprompt -alias $(basename $cert) -file "$cert" -keystore $JAVA_DIR/lib/security/cacerts
+done

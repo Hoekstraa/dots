@@ -3,3 +3,7 @@ fonts/fonts.dir
 nvim/pack
 nvim/.netrwhist
 newsboat/*
+.DS_Store
+
+karabiner/automatic_backups
+git/config-work

@@ -5,19 +5,19 @@ BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 PLATFORM="$(uname | tr '[:upper:]' '[:lower:]')"
 
 link() {
-    # ln -sfT replacement in case of Mac OS
-    case $PLATFORM in
-        linux*)
-            ln -sfT "$1" "$2"
-            ;;
-        darwin*)
-            ln -sfh "$1" "$2"
-            ;;
-        *)
-            ln -sfT "$1" "$2"
-            ;;
-    esac
-}   
+	# ln -sfT replacement in case of Mac OS
+	case $PLATFORM in
+		linux*)
+			ln -sfT "$1" "$2"
+			;;
+		darwin*)
+			ln -sfh "$1" "$2"
+			;;
+		*)
+			ln -sfT "$1" "$2"
+			;;
+	esac
+}
 
 link "$BASEDIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 link "$BASEDIR/bash/bashrc" "$HOME/.bashrc"
@@ -43,7 +43,17 @@ mkdir -vp "$HOME/.gnupg/"
 link "$BASEDIR/gpg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 
 link "$BASEDIR/scripts" "$HOME/.scripts"
-link "$BASEDIR/fonts" "$HOME/.fonts"
+
+case $PLATFORM in
+	darwin*)
+		find "$BASEDIR/fonts/" -name "*.otf" -type f -exec cp {} ~/Library/Fonts \;
+		find "$BASEDIR/fonts/" -name "*.ttf" -type f -exec cp {} ~/Library/Fonts \;
+		;;
+	*)
+		link "$BASEDIR/fonts" "$HOME/.fonts"
+		;;
+esac
+
 
 link "$BASEDIR/x11/xinitrc" "$HOME/.xinitrc"
 link "$BASEDIR/x11/xserverrc" "$HOME/.xserverrc"
