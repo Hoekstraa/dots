@@ -36,6 +36,11 @@ link "$BASEDIR/git" "$HOME/.config/git"
 link "$BASEDIR/newsboat" "$HOME/.config/newsboat"
 link "$BASEDIR/karabiner" "$HOME/.config/karabiner"
 
+link "$BASEDIR/ssh/config" "$HOME/.ssh/config"
+link "$BASEDIR/ssh/config.d" "$HOME/.ssh/config.d"
+
+
+
 mkdir -vp "$HOME/.config/cmus"
 link "$BASEDIR/cmus/rc" "$HOME/.config/cmus/rc"
 
