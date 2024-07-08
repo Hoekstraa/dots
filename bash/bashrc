@@ -58,14 +58,18 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 #Set prompt
-PS1="> "
-git_show_branch() {
-	__gsb_BRANCH=$(git symbolic-ref -q --short HEAD 2>/dev/null)
-	if [ -n "$__gsb_BRANCH" ]; then
-		echo " $__gsb_BRANCH"
-	fi
-}
-PS1="\$(git_show_branch)$PS1"
+if [ "$(command -v starship)" != "" ]; then
+	eval "$(starship init bash)"
+else
+	PS1="> "
+	git_show_branch() {
+		__gsb_BRANCH=$(git symbolic-ref -q --short HEAD 2>/dev/null)
+		if [ -n "$__gsb_BRANCH" ]; then
+			echo " $__gsb_BRANCH"
+		fi
+	}
+	PS1="\$(git_show_branch)$PS1"
+fi
 
 # Set editor, depending on what's available.
 editor="vi"
@@ -75,6 +79,10 @@ elif [ "$(command -v nvim)" != '' ]; then
 	editor="nvim -p"
 elif [ "$(command -v vim)" != '' ]; then
 	editor="vim"
+fi
+
+if [ "$(command -v bat)" != "" ]; then
+	alias cat='bat -pp'
 fi
 
 alias v="$editor"
@@ -123,3 +131,6 @@ fi
 if [ "$(command -v opam)" != '' ]; then
 	eval $(opam env)
 fi
+
+export GOPATH=$HOME/Workspace/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/go/bin
