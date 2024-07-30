@@ -1,10 +1,13 @@
+https://advisories.ncsc.nl/rss/advisories security advisories
 http://feeds.feedburner.com/feedburner/Talos?format=xml security software news
 https://hnrss.org/newest?points=100&comments=25 news software random
+
 https://archlinux.org/feeds/news/ news software os
 https://cloud.redhat.com/blog/rss.xml news software commercial
 https://www.redhat.com/en/rss/blog/channel/red-hat-enterprise-linux news software commercial os
 https://www.eff.org/rss/updates.xml news freedom
 https://micronews.debian.org/feeds/atom.xml news software os
+https://feeds.ncsc.nl/nieuws.rss news security
 
 https://adamdrake.com/posts/index.xml blog software business
 https://www.joelonsoftware.com/feed/ blog software

@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-    signingkey = F9B7B7D8130F3323
+	signingkey = F9B7B7D8130F3323
 	name = Zoë Hoekstra
 	email = altlockg@gmail.com
 
@@ -9,3 +9,15 @@
 	gpgsign = true
 [gpg]
 	program = gpg
+
+[includeIf "gitdir:~/Workspace/"]
+	path = ~/.config/git/config-work
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[core]
+	excludesFile = ~/.config/git/gitignore

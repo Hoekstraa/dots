@@ -1,0 +1,12 @@
+#!/bin/bash
+select_editor () {
+    if [ "$(command -v emacsclient)" != '' ] && [ "$(emacsclient -a false -e 't')" ]; then
+        env TERM=xterm-24bits emacsclient -nw $*
+    elif [ "$(command -v nvim)" != '' ]; then
+        nvim -p $*
+    elif [ "$(command -v vim)" != '' ]; then
+        vim $*
+    fi
+}
+
+select_editor $*
