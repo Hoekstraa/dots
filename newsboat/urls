@@ -1,6 +1,7 @@
 http://feeds.feedburner.com/feedburner/Talos?format=xml security software news
 https://hnrss.org/newest?points=100&comments=25 news software random
 https://archlinux.org/feeds/news/ news software
+https://suckless.org/atom.xml software news
 
 https://adamdrake.com/posts/index.xml blog software business
 https://www.joelonsoftware.com/feed/ blog software
@@ -20,6 +21,8 @@ https://world.hey.com/dhh/feed.atom blog software
 https://blog.janetacarr.com/rss/ blog software clojure
 https://www.sophiajt.com/atom.xml blog software pl rust
 https://andersmurphy.com/feed blog software lisp clojure
+https://100r.co/links/rss.xml software blog
+https://taoofmac.com/feed software blog
 
 https://feeds.feedburner.com/StudyHacks?format=xml blog minimalism
 https://zenhabits.net/feed/ blog minimalism
