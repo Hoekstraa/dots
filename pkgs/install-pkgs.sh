@@ -5,10 +5,10 @@
 
 case $ID in
   arch) echo "This is Arch Linux! Installing packages..."
-      xargs -a ./pkgs/arch-pkgs.txt sudo pacman --needed -Sy
-    ;;
+	  xargs -a ./pkgs/arch-pkgs.txt sudo pacman --needed -Sy
+	  ./pkgs/arch-configure.sh
+	  ;;
 
   *) echo "Unknown distro, skipping package install."
-      ;;
+	  ;;
 esac
-
