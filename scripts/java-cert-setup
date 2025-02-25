@@ -1,8 +1,19 @@
 #!/bin/bash
-JAVA_DIR=/opt/homebrew/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home
+
+# Kopieert certs van certpath naar de cacert store van alle OpenJDK installaties.
+
+JAVA_DIR_START=/opt/homebrew/opt
+JAVA_DIR_REST=/libexec/openjdk.jdk/Contents/Home
 certpath=~/Library/Certificates
 
-for cert in "$certpath"/*
-do
-    sudo $JAVA_DIR/bin/keytool -import -storepass changeit -noprompt -alias $(basename $cert) -file "$cert" -keystore $JAVA_DIR/lib/security/cacerts
+for javadir in $(find $JAVA_DIR_START -name "openjdk@*" -type l); do
+    echo "$javadir"
+
+    for cert in "$certpath"/*
+    do
+        sudo $javadir$JAVA_DIR_REST/bin/keytool -import \
+             -trustcacerts -cacerts \
+             -storepass changeit -noprompt -alias $(basename $cert) \
+             -file "$cert"
+    done
 done

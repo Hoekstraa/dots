@@ -1,3 +1,10 @@
-if [ -f ~/.bashrc ]; then
-		source ~/.bashrc
-fi
+# -*- mode: sh -*-
+# In case we're running MacOS and we've installed
+# (among others) GPG through Brew
+export PATH="/opt/homebrew/bin:$PATH"
+
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+#if [ -f ~/.bashrc ]; then
+#		source ~/.bashrc
+#fi
