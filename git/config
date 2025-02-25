@@ -1,23 +1,76 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	signingkey = F9B7B7D8130F3323
-	name = Zoë Hoekstra
-	email = altlockg@gmail.com
+  signingkey = F9B7B7D8130F3323
+  name = Zoë Hoekstra
+  email = altlockg@gmail.com
 
 [commit]
-	gpgsign = true
+  gpgsign = true
 [gpg]
-	program = gpg
+  program = gpg
 
 [includeIf "gitdir:~/Workspace/"]
-	path = ~/.config/git/config-work
+  path = ~/.config/git/config-work
 
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
 
 [core]
-	excludesFile = ~/.config/git/gitignore
+  excludesFile = ~/.config/git/gitignore
+  whitespace = -space-before-tab,tab-in-indent
+
+#
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+#
+
+[column]
+        ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[init]
+        defaultBranch = main
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
+        colormovedws = allow-indentation-change
+[push]
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+# why the hell not?
+
+[help]
+        autocorrect = prompt
+#[commit]
+#        verbose = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
+
+# a matter of taste (uncomment if you dare)
+
+[core]
+        # fsmonitor = true
+        # untrackedCache = true
+[merge]
+        # (just 'diff3' if git version < 2.3)
+        # conflictstyle = zdiff3
+[pull]
+        # rebase = true
