@@ -1,2 +1,12 @@
 Include ~/.ssh/config.d/*
 StrictHostKeyChecking accept-new
+
+Host *
+  ServerAliveInterval 120
+  #ControlPath ~/.ssh/controlmasters/%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
+  ControlPath ~/.ssh/controlmasters/%C
+  #GSSAPIAuthentication no
+  #PreferredAuthentications=publickey
+  Compression yes
