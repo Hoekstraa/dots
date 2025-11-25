@@ -4,6 +4,7 @@
 export PATH="/opt/homebrew/bin:$PATH"
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export GPG_TTY=$(tty)
 
 #if [ -f ~/.bashrc ]; then
 #		source ~/.bashrc

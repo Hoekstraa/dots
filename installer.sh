@@ -5,18 +5,18 @@ BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 PLATFORM="$(uname | tr '[:upper:]' '[:lower:]')"
 
 link() {
-		# ln -sfT replacement in case of Mac OS
-		case $PLATFORM in
-				linux*)
-						ln -sfT "$1" "$2"
-						;;
-				darwin*)
-						ln -sfh "$1" "$2"
-						;;
-				*)
-						ln -sfT "$1" "$2"
-						;;
-		esac
+    # ln -sfT replacement in case of Mac OS
+    case $PLATFORM in
+        linux*)
+            ln -sfT "$1" "$2"
+            ;;
+        darwin*)
+            ln -sfh "$1" "$2"
+            ;;
+        *)
+            ln -sfT "$1" "$2"
+            ;;
+    esac
 }
 
 link "$BASEDIR/bash/bashrc" "$HOME/.bashrc"
@@ -39,6 +39,7 @@ link "$BASEDIR/newsboat" "$HOME/.config/newsboat"
 link "$BASEDIR/karabiner" "$HOME/.config/karabiner"
 link "$BASEDIR/cmus/" "$HOME/.config/cmus"
 
+mkdir -vp "$HOME/.ssh/controlmasters/"
 link "$BASEDIR/ssh/config" "$HOME/.ssh/config"
 link "$BASEDIR/ssh/config.d" "$HOME/.ssh/config.d"
 
@@ -48,28 +49,31 @@ link "$BASEDIR/gpg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 link "$BASEDIR/scripts" "$HOME/.scripts"
 
 case $PLATFORM in
-		darwin*)
-				find "$BASEDIR/fonts/" -name "*.otf" -type f -exec cp {} ~/Library/Fonts \;
-				find "$BASEDIR/fonts/" -name "*.ttf" -type f -exec cp {} ~/Library/Fonts \;
-				;;
-		*)
-				link "$BASEDIR/fonts" "$HOME/.fonts"
-				;;
+    darwin*)
+        find "$BASEDIR/fonts/" -name "*.otf" -type f -exec cp {} ~/Library/Fonts \;
+        find "$BASEDIR/fonts/" -name "*.ttf" -type f -exec cp {} ~/Library/Fonts \;
+        ;;
+    *)
+        link "$BASEDIR/fonts" "$HOME/.fonts"
+        ;;
 esac
 
 link "$BASEDIR/x11/xinitrc" "$HOME/.xinitrc"
 link "$BASEDIR/x11/xserverrc" "$HOME/.xserverrc"
 
 case $PLATFORM in
-		darwin*)
+    darwin*)
 
-				# Disable keychain saving in pinentry
-				defaults write org.gpgtools.common UseKeychain NO
-				;;
-		*)
-				# For 24-bit color in CLI Emacs, a terminfo definition needs to exist
-				tic -x -o ~/.terminfo "$BASEDIR/terminfo/xterm-24bits.terminfo"
-				;;
+        # Disable keychain saving in pinentry
+        defaults write org.gpgtools.common UseKeychain NO
+
+        # For 24-bit color in CLI Emacs, a terminfo definition needs to exist
+        /usr/bin/tic -x -o ~/.terminfo "$BASEDIR/terminfo/xterm-24bit.terminfo"
+        ;;
+    *)
+        # For 24-bit color in CLI Emacs, a terminfo definition needs to exist
+        tic -x -o ~/.terminfo "$BASEDIR/terminfo/xterm-24bit.terminfo"
+        ;;
 esac
 
 ./gnome/settings.sh
