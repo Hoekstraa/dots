@@ -15,7 +15,7 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # Start gpg-agent
 if ! pgrep gpg-agent > /dev/null; then
-	gpgconf --launch gpg-agent &
+  gpgconf --launch gpg-agent &
 fi
 
 # Needed for GPG git/etc. auth
@@ -44,43 +44,48 @@ shopt -s cdspell # Fix cd errors in interactive shell
 
 # Advanced bash completion
 if ! shopt -oq posix; then
-	if [ -f /opt/homebrew/etc/bash_completion ]; then
-		. /opt/homebrew/etc/bash_completion
-	elif [ -f /usr/share/bash-completion/bash_completion ]; then
-		. /usr/share/bash-completion/bash_completion
-	elif [ -f /etc/bash_completion ]; then
-		. /etc/bash_completion
-	elif [ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]; then
-		. "/opt/homebrew/etc/profile.d/bash_completion.sh"
-	fi
+  if [ -f /opt/homebrew/etc/bash_completion ]; then
+    . /opt/homebrew/etc/bash_completion
+  elif [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  elif [ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]; then
+    . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+  fi
 fi
+
+if [ "$(command -v most)" != '' ]; then
+    export PAGER=most
+fi
+
 
 # Auto-complete command from history
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 # Add scripts to path
 if [ -d "$HOME/.scripts" ] ; then
-	PATH="$HOME/.scripts:$PATH"
+  PATH="$HOME/.scripts:$PATH"
 fi
 if [ -d "$HOME/bin" ] ; then
-	PATH="$HOME/bin:$PATH"
+  PATH="$HOME/bin:$PATH"
 fi
 if [ -d "$HOME/.local/bin" ] ; then
-	PATH="$HOME/.local/bin:$PATH"
+  PATH="$HOME/.local/bin:$PATH"
 fi
 
 #Set prompt
 if [ "$(command -v starship)" != "" ]; then
-	eval "$(starship init bash)"
+  eval "$(starship init bash)"
 else
-	PS1="> "
-	git_show_branch() {
-		__gsb_BRANCH=$(git symbolic-ref -q --short HEAD 2>/dev/null)
-		if [ -n "$__gsb_BRANCH" ]; then
-			echo " $__gsb_BRANCH"
-		fi
-	}
-	PS1="\$(git_show_branch)$PS1"
+  PS1="> "
+  git_show_branch() {
+    __gsb_BRANCH=$(git symbolic-ref -q --short HEAD 2>/dev/null)
+    if [ -n "$__gsb_BRANCH" ]; then
+      echo " $__gsb_BRANCH"
+    fi
+  }
+  PS1="\$(git_show_branch)$PS1"
 fi
 
 alias v=editor
@@ -89,10 +94,10 @@ alias vim=editor
 export EDITOR=editor
 
 # A bunch of aliases, just cause.
-unamestr=$(uname)
+platform=$(uname)
 
-if [ "$unamestr" != 'Darwin' ]; then
-	alias open='xdg-open'
+if [ "$platform" != 'Darwin' ]; then
+  alias open='xdg-open'
 fi
 alias ec='emacsclient -n -r'
 alias agenda='emacsclient -n -r -e "(progn (org-agenda-list)(delete-other-windows))" > /dev/null'
@@ -102,54 +107,67 @@ alias du='du -sh' # Only show the total in human readable format
 alias df='df -h' # Show in human readable format
 alias mkdir='mkdir -p' # Don't be mad when I try to make multiple folders at once.
 alias xclip='xclip -sel clip' # Have xclip always overwrite global clipboard
-alias gpgreload='gpg-connect-agent updatestartuptty /bye > /dev/null'
+alias gpgreload='gpgconf --kill gpg-agent && gpg-connect-agent updatestartuptty /bye > /dev/null'
 alias feed='newsboat'
 alias feedreload='newsboat -xreload'
 alias mail='mutt'
 alias mailreload='mbsync -aV'
 alias emacs='env TERM=xterm-24bits emacs -nw'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias bat='bat --theme base16'
+if [ "$(command -v bat)" != '' ]; then
+    alias cat='bat --theme base16'
+fi
+
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+# add support for ctrl+o to open selected file in editor
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute($EDITOR {})+abort'"
 
 alias git='gpg-connect-agent updatestartuptty /bye >/dev/null; git'
 alias ssh='gpg-connect-agent updatestartuptty /bye >/dev/null; ssh'
 
-platform='unknown'
-if [ "$unamestr" = 'Linux' ]; then
-	platform='linux'
-elif [ "$unamestr" = 'FreeBSD' ]; then
-	platform='freebsd'
-fi
+alias kaf='kubectl apply --server-side -f'
+alias kak='kubectl apply --server-side -k'
 
-if [ "$platform" = 'linux' ]; then
-	alias ls='ls -GlshopZ --color=auto --group-directories-first'
+bind -x '"\C-x\C-t":tmux'
 
-elif [ "$platform" = 'freebsd' ]; then
-	alias ls='ls -laG'
 
-elif [ "$unamestr" = 'Darwin' ]; then
-	alias ls='ls -laG'
+if [ "$platform" = 'Linux' ]; then
+    alias ls='ls -GlshopZ --color=auto --group-directories-first'
+
+elif [ "$platform" = 'FreeBSD' ]; then
+  alias ls='ls -laG'
+
+elif [ "$platform" = 'Darwin' ]; then
+    alias ls='ls -laG'
 fi
 
 # Make Firefox run native Wayland framing, uses less resources and allows for native features
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-	export MOZ_ENABLE_WAYLAND=1
+  export MOZ_ENABLE_WAYLAND=1
 fi
 
 function set-title() {
-	if [[ -z "$ORIG" ]]; then
-		ORIG=$PS1
-	fi
-	TITLE="\[\e]2;$*\a\]"
-	PS1=${ORIG}${TITLE}
+  if [[ -z "$ORIG" ]]; then
+    ORIG=$PS1
+  fi
+  TITLE="\[\e]2;$*\a\]"
+  PS1=${ORIG}${TITLE}
 }
 
 function map () {
-	for x in "${@:2}"; do $1 $x; done
+  for x in "${@:2}"; do $1 $x; done
 }
 
 if [ -d "$HOME/.bashrc.d" ] ; then
-	for f in ~/.bashrc.d/*; do source $f; done
+  for f in ~/.bashrc.d/*; do source $f; done
 fi
 
 export GOPATH=$HOME/Workspace/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/go/bin
+export SDKROOT=$(xcrun --show-sdk-path)
+export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+
+if [ "$(command -v fzf)" != '' ]; then
+    eval "$(fzf --bash)"
+fi
