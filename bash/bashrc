@@ -98,6 +98,7 @@ platform=$(uname)
 
 if [ "$platform" != 'Darwin' ]; then
   alias open='xdg-open'
+  alias tmux='env SHELL=/opt/homebrew/bin/bash tmux'
 fi
 alias ec='emacsclient -n -r'
 alias agenda='emacsclient -n -r -e "(progn (org-agenda-list)(delete-other-windows))" > /dev/null'
@@ -115,6 +116,8 @@ alias mailreload='mbsync -aV'
 alias emacs='env TERM=xterm-24bits emacs -nw'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias bat='bat --theme base16'
+alias p='pass -c'
+
 if [ "$(command -v bat)" != '' ]; then
     alias cat='bat --theme base16'
 fi
@@ -131,16 +134,17 @@ alias kak='kubectl apply --server-side -k'
 
 bind -x '"\C-x\C-t":tmux'
 
-
 if [ "$platform" = 'Linux' ]; then
-    alias ls='ls -GlshopZ --color=auto --group-directories-first'
+  alias ls='ls -GlshopZ --color=auto --group-directories-first'
 
 elif [ "$platform" = 'FreeBSD' ]; then
   alias ls='ls -laG'
 
 elif [ "$platform" = 'Darwin' ]; then
-    alias ls='ls -laG'
+  alias ls='ls -laG'
 fi
+
+export LESS='-XFR --mouse --quit-if-one-screen --long-prompt --chop-long-lines --use-color'
 
 # Make Firefox run native Wayland framing, uses less resources and allows for native features
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
@@ -159,15 +163,10 @@ function map () {
   for x in "${@:2}"; do $1 $x; done
 }
 
-if [ -d "$HOME/.bashrc.d" ] ; then
-  for f in ~/.bashrc.d/*; do source $f; done
-fi
-
-export GOPATH=$HOME/Workspace/.go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/go/bin
-export SDKROOT=$(xcrun --show-sdk-path)
-export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
-
 if [ "$(command -v fzf)" != '' ]; then
     eval "$(fzf --bash)"
+fi
+
+if [ -d "$HOME/.bashrc.d" ] ; then
+  for f in ~/.bashrc.d/*; do source $f; done
 fi
