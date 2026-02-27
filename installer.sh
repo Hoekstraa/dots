@@ -23,6 +23,8 @@ link "$BASEDIR/bash/bashrc" "$HOME/.bashrc"
 link "$BASEDIR/bash/bashrc" "$HOME/.bash_profile"
 link "$BASEDIR/zsh/zshrc" "$HOME/.zshrc"
 link "$BASEDIR/vim/" "$HOME/.vim"
+link "$BASEDIR/intellij/ideavimrc" "$HOME/.ideavimrc"
+
 
 mkdir -vp "$HOME/.config/"
 link "$BASEDIR/tmux/" "$HOME/.config/tmux"
